@@ -1,0 +1,48 @@
+{
+  "name": "sword-adventure",
+  "version": "1.0.0",
+  "description": "A game made with ExcaliburJS engine",
+  "main": "index.ts",
+  "scripts": {
+    "serve": "webpack serve --config webpack.development.js",
+    "build:dev": "webpack --config webpack.development.js",
+    "build:prod": "webpack --config webpack.production.js"
+  },
+  "author": "Facondia Games",
+  "dependencies": {
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^12.19.15",
+    "copy-webpack-plugin": "^11.0.0",
+    "reflect-metadata": "^0.1.13",
+    "typedi": "^0.10.0",
+    "typescript": "^4.5.2",
+    "web-vitals": "^2.1.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "source-map-loader": "2.0.2",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-loader": "9.2.6",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  }
+}

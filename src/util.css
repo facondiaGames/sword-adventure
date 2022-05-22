@@ -1,0 +1,57 @@
+.vertical-grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.horizontal-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-size {
+    width: 100%;
+    height: 100%;
+}
+
+.half-sizes {
+    width: 50%;
+    height: 50%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.width-fit-content {
+    width: fit-content;
+}
+
+.display--none {
+    display: none;
+}
+
+.image--resize {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.padding-s {
+    padding: 0.3rem;
+}
+
+.overflow--auto {
+    overflow: auto;
+}
+
+.overflow--scroll {
+    overflow: scroll;
+}

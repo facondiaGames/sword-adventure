@@ -1,0 +1,59 @@
+.vertical-grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.horizontal-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row--reverse {
+    flex-direction: row-reverse;
+}
+
+.flex--space-between {
+    justify-content: space-between;
+}
+
+.flex--space-evenly {
+    justify-content: space-evenly;
+}
+
+.flex--justify-center {
+    justify-content: center;
+}
+
+.flex--justify-end {
+    justify-content: end;
+}
+
+.flex--wrap {
+    flex-wrap: wrap;
+}
+
+.flex--max-grow {
+    flex-grow: 1;
+}
+
+.flex-align-items--center {
+    align-items: center;
+}
+
+.flex-align-items--end {
+    align-items: end;
+}
