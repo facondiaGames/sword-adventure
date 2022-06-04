@@ -4,7 +4,7 @@
     "skipLibCheck": true,
     "module": "esnext",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "baseUrl": "./src",
     "outDir": "./dist/out-tsc",

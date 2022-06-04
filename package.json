@@ -5,13 +5,12 @@
   "main": "index.ts",
   "scripts": {
     "serve": "webpack serve --config webpack.development.js",
+    "jest-test": "jest",
     "build:dev": "webpack --config webpack.development.js",
-    "build:prod": "webpack --config webpack.production.js"
+    "build:prod": "npm run jest-test && webpack --config webpack.production.js"
   },
   "author": "Facondia Games",
   "dependencies": {
-    "@babel/preset-typescript": "^7.16.7",
-    "@types/jest": "^26.0.20",
     "@types/node": "^12.19.15",
     "copy-webpack-plugin": "^11.0.0",
     "excalibur": "^0.26.0",
@@ -34,14 +33,25 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^26.0.20",
+    "babel-jest": "^28.1.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.0",
+    "jest-canvas-mock": "^2.4.0",
+    "jest-environment-jsdom": "^28.1.0",
     "source-map-loader": "2.0.2",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.1",
+    "ts-jest": "^28.0.4",
     "ts-loader": "9.2.6",
+    "ts-mockito": "^2.6.1",
+    "ts-node": "^10.8.1",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0"

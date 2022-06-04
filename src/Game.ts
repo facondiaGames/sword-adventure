@@ -1,8 +1,9 @@
-import {Engine, EngineOptions, Loader} from 'excalibur';
-import {Container} from 'typedi';
-import {EngineOptionsFactory} from './services/EngineOptionsFactory';
-import {PlayScene} from "./scenes/PlayScene";
-import {SceneKeys} from "./types/BasicTypes";
+import { Engine, EngineOptions, Loader } from 'excalibur';
+import { Container } from 'typedi';
+import { EngineOptionsFactory } from './services/EngineOptionsFactory';
+import { PlayScene } from "./scenes/PlayScene";
+import { SceneKeys } from "./types/BasicTypes";
+import { allResources } from './config/AllResources';
 
 export class Game extends Engine {
 
@@ -20,6 +21,7 @@ export class Game extends Engine {
                 this.game.addScene(key, new ctor())
             });
         }
+        this.game.showDebug(true);
         return this.game;
     }
 
@@ -28,7 +30,7 @@ export class Game extends Engine {
     }
 
     public startCustomLoader(): Promise<void> {
-        const loader: Loader = new Loader();
+        const loader: Loader = new Loader(allResources);
         this.logLoadingProgress(loader);
         loader.startButtonFactory = () => {
             const progressLoggerElement: HTMLElement = document.getElementById('loader-progress');
