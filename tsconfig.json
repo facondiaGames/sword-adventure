@@ -5,7 +5,7 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "noEmit": true,
+    "noEmit": false,
     "baseUrl": "./src",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -14,7 +14,7 @@
     "noFallthroughCasesInSwitch": true,
     "emitDecoratorMetadata": true,
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "downlevelIteration": true,
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
@@ -31,11 +31,10 @@
     "allowJs": true
   },
   "include": [
-    "src"
+    "src/**/*",
+    "test-karma/**/*"
   ],
   "exclude": [
-    "**/*.test.ts",
-    "**/*.spec.ts",
-    "**/*.test.tsx"
+    "node_modules"
   ]
 }

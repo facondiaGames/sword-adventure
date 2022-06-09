@@ -2,41 +2,35 @@
 @import 'flex.css';
 
 html {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  font-family: Righteous, "Luckiest Guy", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: Righteous, "Luckiest Guy", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-#root {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.toolbar {
-  position: absolute;
-  z-index: 9000;
-}
-
-.footer {
-  position: absolute;
-  z-index: 9000;
-  bottom: 0;
+.joystick {
+    position: absolute;
+    bottom: 200px;
+    right: 200px;
 }
 
 .absolute-bottom {
-  position: absolute;
-  bottom: 0;
+    position: absolute;
+    bottom: 0;
+}
+
+.absolute-top {
+    position: absolute;
+    top: 0;
 }
 
 .white-text {
-  color: white;
+    color: white;
 }

@@ -24,8 +24,8 @@ export module PlayerGraphics {
     }
 
     export const animations: ActorAnimation = {
-        idle: Animation.fromSpriteSheet(botSheet, range(0, 0), 200),
-        run: Animation.fromSpriteSheet(botSheet, range(25, 27), 200)
+        idle: Animation.fromSpriteSheet(botSheet, range(0, 0), 100),
+        run: Animation.fromSpriteSheet(botSheet, range(25, 27), 100)
     }
 
 }

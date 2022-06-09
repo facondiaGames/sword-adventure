@@ -35,7 +35,7 @@ export const uiConfig: UiDivConfig = {
     loaderProgressId: 'loader-progress'
 };
 
-export type DomElementIds = 'root' | 'game' | 'loader-progress';
+export type DomElementIds = 'root' | 'game' | 'loader-progress' | 'joystick';
 export type DomElementKeys = 'rootDivId' | 'gameCanvaId' | 'loaderProgressId';
 
 export type UiDivConfig = { [key in DomElementKeys]: DomElementIds }

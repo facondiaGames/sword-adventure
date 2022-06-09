@@ -1,7 +1,7 @@
-import {DisplayMode, EngineOptions, Input} from 'excalibur';
-import {uiConfig} from './DOMService';
-import {Service} from 'typedi';
-import {Configs} from "../config/GeneralGameConfig";
+import { DisplayMode, EngineOptions, Input } from 'excalibur';
+import { uiConfig } from './DOMService';
+import { Service } from 'typedi';
+import { Configs } from "../config/GeneralGameConfig";
 
 @Service()
 export class EngineOptionsFactory {
