@@ -4,8 +4,11 @@ import { Game } from "./Game";
 import { Container } from "typedi";
 import { DOMService } from "./services/DOMService";
 import { DevelService } from './DevelService';
+import { DeviceService } from './services/DeviceService';
 
 const domService: DOMService = Container.get(DOMService);
+const deviceService: DeviceService = Container.get(DeviceService);
+deviceService.init();
 
 const devService: DevelService = Container.get(DevelService);
 devService.showDevelopmentTools();

@@ -27,7 +27,7 @@ describe('Player', () => {
 
         player.onInitialize(engine);
 
-        verify(motionService.setPlayer(player)).once();
+        verify(motionService.setPlayer(player, anything(), anything())).once();
         verify(motionService.setMotionType('keyboard')).once();
     });
 

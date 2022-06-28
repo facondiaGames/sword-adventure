@@ -1,9 +1,10 @@
-import { Engine, EngineOptions, Loader } from 'excalibur';
+import { Engine, EngineOptions, Loader, Physics, vec } from 'excalibur';
 import { Container } from 'typedi';
 import { EngineOptionsFactory } from './services/EngineOptionsFactory';
 import { PlayScene } from "./scenes/PlayScene";
 import { SceneKeys } from "./types/BasicTypes";
 import { allResources } from './config/AllResources';
+import { GameConfigService } from './services/GameConfigService';
 
 export class Game extends Engine {
 
@@ -20,8 +21,10 @@ export class Game extends Engine {
             Object.values(this.scenesInfo).forEach(({key, ctor}) => {
                 this.game.addScene(key, new ctor())
             });
+            const gameConfigService = Container.get(GameConfigService);
+            const {gravity} = gameConfigService.getPhysicsConfig();
+            Physics.gravity = vec(gravity.x, gravity.y);
         }
-        this.game.showDebug(true);
         return this.game;
     }
 

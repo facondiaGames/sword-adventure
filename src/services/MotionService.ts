@@ -12,9 +12,13 @@ export class MotionService {
     private speedMultiplier: number = 80;
     private yMapping = {up: -1, down: 1};
     private joystickFactory: JoystickFactory = Container.get(JoystickFactory);
+    private endMoveFn: () => void;
+    private startMoveFn: () => void;
 
-    public setPlayer(actor: Actor) {
+    public setPlayer(actor: Actor, startMove: () => void, endMove: () => void) {
         this.player = actor;
+        this.endMoveFn = endMove;
+        this.startMoveFn = startMove;
     }
 
     public setMotionType(motionType: MotionTypes): void {
@@ -35,12 +39,12 @@ export class MotionService {
             [Hold, Release].forEach(event => {
                 this.player.scene.engine.input.keyboard.off(event);
             })
-            //spegnere altri tipi di controller
         }
         if (on) {
             this.player.scene.engine.input.keyboard.on(Release, () => {
                 this.player.vel.setTo(0, 0);
                 this.player.graphics.use(ActorAnimations.IDLE);
+                this.endMoveFn();
             });
             this.player.scene.engine.input.keyboard.on(Hold, (evt) => {
                 let dir = Vector.Down;
@@ -68,6 +72,7 @@ export class MotionService {
                 }
                 const speed: Speed = {x: dir.x * this.speedMultiplier, y: dir.y * this.speedMultiplier};
                 this.run(speed, horizontalFlip);
+                this.startMoveFn();
             });
         }
 
@@ -92,6 +97,7 @@ export class MotionService {
                 this.player.rotation = toRadians(0);
                 this.player.vel.setTo(0, 0);
                 this.player.graphics.use(ActorAnimations.IDLE);
+                this.endMoveFn();
             });
         }
     }

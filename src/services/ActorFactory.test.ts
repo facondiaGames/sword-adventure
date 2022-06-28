@@ -1,7 +1,7 @@
 import { ActorFactory } from './ActorFactory';
 import { ActorArgs, CollisionType, Shape, vec } from 'excalibur';
 import { Player } from '../actors/Player';
-import { ActorTags } from '../config/ActorTags';
+import { Tags } from '../config/Tags';
 
 describe('ActorFactory', () => {
 
@@ -20,7 +20,7 @@ describe('ActorFactory', () => {
 
         const player: Player = actorFactory.createPlayer(actorArgs);
 
-        expect(player.tags.includes(ActorTags.TAGS.player)).toBe(true);
+        expect(player.tags.includes(Tags.ACTORS.player)).toBe(true);
     });
 
 });

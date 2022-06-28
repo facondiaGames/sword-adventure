@@ -2,6 +2,7 @@ import { Actor, ActorArgs, CollisionGroupManager, Engine } from 'excalibur';
 import { ActorType } from '../types/BasicTypes';
 import { Container } from 'typedi';
 import { GraphicService } from '../services/GraphicService';
+import { ZIndexes } from '../config/ZIndexes';
 
 export abstract class ExcaliburActor extends Actor {
 
@@ -23,6 +24,7 @@ export abstract class ExcaliburActor extends Actor {
     public onInitialize(_engine: Engine) {
         this.graphicService.registerActorGraphics(this.type, this);
         this.graphicService.registerActorAnimations(this.type, this);
+        this.z = ZIndexes.actors[this.type];
     }
 
 }

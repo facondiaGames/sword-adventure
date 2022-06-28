@@ -5,8 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "serve": "webpack serve --config webpack.development.js",
-    "jest-test": "jest",
-    "karma-test": "karma start",
+    "jest": "jest",
+    "karma": "karma start",
     "test": "npm run jest-test && npm run karma-test",
     "build:dev": "webpack --config webpack.development.js",
     "build:prod": "webpack --config webpack.production.js"

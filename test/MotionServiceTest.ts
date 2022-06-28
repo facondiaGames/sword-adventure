@@ -31,7 +31,8 @@ describe('MotionService', () => {
         const actor: Actor = new Actor();
         testScene.add(actor);
         motionService = new MotionService();
-        motionService.setPlayer(actor);
+        const emptyFunction = () => {/* do nothing */}
+        motionService.setPlayer(actor, emptyFunction, emptyFunction);
         const keyboardSpy: Keyboard = spy(testScene.engine.input.keyboard);
 
         motionService.setMotionType('keyboard');
@@ -46,7 +47,8 @@ describe('MotionService', () => {
         const actor: Actor = new Actor();
         testScene.add(actor);
         motionService = new MotionService();
-        motionService.setPlayer(actor);
+        const emptyFunction = () => {/* do nothing */}
+        motionService.setPlayer(actor, emptyFunction, emptyFunction);
         const keyboardSpy: Keyboard = spy(testScene.engine.input.keyboard);
         const joystickManagerMock: JoystickManager = mock(JoystickManager);
         when(joystickFactorySpy.getJoystick()).thenReturn(instance(joystickManagerMock))
