@@ -9,7 +9,8 @@ export module ZIndexes {
     export const layers: { [key in ParallaxType]: number } = {
         layer1: 1,
         layer2: 2,
-        layer3: 3
+        layer3: 3,
+        layer4: 4
     }
 
 }

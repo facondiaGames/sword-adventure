@@ -7,7 +7,7 @@
     "serve": "webpack serve --config webpack.development.js",
     "jest": "jest",
     "karma": "karma start",
-    "test": "npm run jest-test && npm run karma-test",
+    "test": "npm run jest && npm run karma",
     "build:dev": "webpack --config webpack.development.js",
     "build:prod": "webpack --config webpack.production.js"
   },

@@ -15,6 +15,7 @@ export module Tags {
             layer1: 'layer1',
             layer2: 'layer2',
             layer3: 'layer3',
+            layer4: 'layer4'
         }
     }
 

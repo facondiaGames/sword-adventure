@@ -1,22 +1,22 @@
 import { Container } from 'typedi';
 import { DeviceService } from '../services/DeviceService';
 import { ParallaxType, SceneKeys } from '../types/BasicTypes';
-import { Actor, Axis, CollisionType, Color, Rectangle, Scene, Shape, vec } from 'excalibur';
+import { Axis, CollisionType, Scene, Shape, vec } from 'excalibur';
 import { ZIndexes } from './ZIndexes';
 import { QueryManagerService } from '../services/QueryManagerService';
 import { Tags } from './Tags';
+import { ParallaxTile } from '../actors/ParallaxTile';
+import { TileSize } from '../types/GraphicTypes';
 
 export module HorizontalParallaxConfig {
 
     export const perSceneParallaxConfig: ParallaxConfig<ParallaxType> = {
         playLevel: {
-            // for now we'll use rectangles. In the end we'll use real assets
             layer1: scene => {
                 const tileNumber = 2;
                 const heightScaling = 1;
-                const {layerWidth, layerHeight} = getLayerSize(tileNumber, heightScaling);
-                const rectangles = buildColorfulRectangles(tileNumber, layerWidth, layerHeight);
-                const tiles = buildTile(rectangles, 'layer1');
+                const {layerWidth, layerHeight} = getGrahicTileSize(tileNumber, heightScaling);
+                const tiles = buildGraphicTile(tileNumber, 'layer1', {height: layerHeight, width: layerWidth});
                 const height: number = scene.camera.viewport.height;
                 tiles.forEach((tile, index) => {
                     const xPos = index * layerWidth;
@@ -32,15 +32,17 @@ export module HorizontalParallaxConfig {
                 });
             },
             layer2: scene => {
-                const tileNumber = 4;
-                const heightScaling = 0.6;
-                const {layerWidth, layerHeight} = getLayerSize(tileNumber, heightScaling);
-                const rectangles = buildColorfulRectangles(tileNumber, layerWidth, layerHeight);
-                const tiles = buildTile(rectangles, 'layer2');
+                const tileNumber =6;
+                const heightScaling = 0.8;
+                const {layerWidth, layerHeight} = getGrahicTileSize(tileNumber, heightScaling);
+                const tiles = buildGraphicTile(tileNumber, 'layer2', {height: layerHeight, width: layerWidth});
                 const height: number = scene.camera.viewport.height;
+                const queryManagerService = Container.get(QueryManagerService);
+                const [layer4Tile] = queryManagerService.query<ParallaxTile>(Tags.LAYERS.horizontal.layer4, scene);
+                const {height: layer4Height} = layer4Tile?.getTileSize() ?? {height: 0};
                 tiles.forEach((tile, index) => {
                     const xPos = index * layerWidth;
-                    const yPos = height - layerHeight;
+                    const yPos = height - layerHeight - layer4Height;
                     tile.z = ZIndexes.layers.layer2;
                     tile.pos = vec(xPos, yPos);
                     tile.on('exitviewport', () => {
@@ -52,11 +54,32 @@ export module HorizontalParallaxConfig {
                 });
             },
             layer3: scene => {
+                const tileNumber = 8;
+                const heightScaling = 0.2;
+                const {layerWidth, layerHeight} = getGrahicTileSize(tileNumber, heightScaling);
+                const tiles = buildGraphicTile(tileNumber, 'layer3', {height: layerHeight, width: layerWidth});
+                const height: number = scene.camera.viewport.height;
+                const queryManagerService = Container.get(QueryManagerService);
+                const [layer4Tile] = queryManagerService.query<ParallaxTile>(Tags.LAYERS.horizontal.layer4, scene);
+                const {height: layer4Height} = layer4Tile?.getTileSize() ?? {height: 0};
+                tiles.forEach((tile, index) => {
+                    const xPos = index * layerWidth;
+                    const yPos = height - layerHeight - layer4Height;
+                    tile.z = ZIndexes.layers.layer3;
+                    tile.pos = vec(xPos, yPos);
+                    tile.on('exitviewport', () => {
+                        const directionFactor = getDirectionFactor(scene);
+                        const currentPosX = tile.pos.x;
+                        tile.pos.x = currentPosX + directionFactor * tileNumber * layerWidth;
+                    });
+                    scene.add(tile);
+                });
+            },
+            layer4: scene => {
                 const tileNumber = 10;
-                const heightScaling = 0.15;
-                const {layerWidth, layerHeight} = getLayerSize(tileNumber, heightScaling);
-                const rectangles = buildColorfulRectangles(tileNumber, layerWidth, layerHeight);
-                const tiles = buildTile(rectangles, 'layer3');
+                const heightScaling = 0.02;
+                const {layerWidth, layerHeight} = getGrahicTileSize(tileNumber, heightScaling);
+                const tiles = buildGraphicTile(tileNumber, 'layer4', {height: layerHeight, width: layerWidth});
                 tiles.forEach(tile => {
                     tile.body.collisionType = CollisionType.Fixed;
                     const collider = Shape.Box(layerWidth, layerHeight, vec(0, 0));
@@ -66,7 +89,7 @@ export module HorizontalParallaxConfig {
                 tiles.forEach((tile, index) => {
                     const xPos = index * layerWidth;
                     const yPos = height - layerHeight;
-                    tile.z = ZIndexes.layers.layer3;
+                    tile.z = ZIndexes.layers.layer4;
                     tile.pos = vec(xPos, yPos);
                     tile.on('exitviewport', () => {
                         const currentPosX = tile.pos.x;
@@ -88,13 +111,14 @@ export module HorizontalParallaxConfig {
     }
 
     export const headedRightVelocitiesMagnitude: { [key in ParallaxType | 'camera']: { x: number, y: number } } = {
-        camera: {x: 10, y: 0},
-        layer1: {x: 0, y: 0},
-        layer2: {x: -10, y: 0},
-        layer3: {x: -20, y: 0},
+        camera: {x: 20, y: 0},
+        layer1: {x: -5, y: 0},
+        layer2: {x: -40, y: 0},
+        layer3: {x: -60, y: 0},
+        layer4: {x: 0, y: 0},
     }
 
-    function getLayerSize(tileNumber: number, layerHeightScale: number) {
+    function getGrahicTileSize(tileNumber: number, layerHeightScale: number) {
         const deviceService = Container.get(DeviceService);
         const {vw, vh} = deviceService.getViewportSize();
         const layerWidth: number = vw / (tileNumber - 1);
@@ -102,28 +126,15 @@ export module HorizontalParallaxConfig {
         return {layerWidth, layerHeight};
     }
 
-    function buildColorfulRectangles(tileNumber: number, layerWidth: number, layerHeight: number) {
-        const colors: Color[] = [];
-        for (let i = 0; i < tileNumber; i++) {
-            const randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
-            const color = Color.fromHex(randomColor);
-            colors.push(color);
-        }
-        return colors.map(color => {
-            const rectangle = new Rectangle({color, width: layerWidth, height: layerHeight});
-            rectangle.origin = vec(0, 0);
-            return rectangle;
-        });
-    }
-
-    function buildTile(rectangles: Rectangle[], type: ParallaxType) {
-        return rectangles.map(rectangle => {
-            const layerTile = new Actor();
+    function buildGraphicTile(howMany:number, type: ParallaxType, tileSize: TileSize){
+        const tiles: ParallaxTile[] = [];
+        for(let i=0; i< howMany; i++){
+            const layerTile = new ParallaxTile(type, tileSize);
             layerTile.anchor = vec(0, 0);
-            layerTile.graphics.use(rectangle);
             layerTile.addTag(Tags.LAYERS.horizontal[type]);
-            return layerTile;
-        });
+            tiles.push(layerTile);
+        }
+        return tiles;
     }
 
     function getDirectionFactor(scene: Scene) {

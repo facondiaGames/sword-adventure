@@ -1,5 +1,5 @@
 import { Actor, Events, Input, toRadians, Vector } from 'excalibur';
-import { ActorAnimations } from '../util/ActorAnimations';
+import { ActorAnimationsKeys } from '../config/graphics/keys/ActorTextureKeys';
 import { Container, Service } from 'typedi';
 import { JoystickFactory } from './JoystickFactory';
 import { JoystickManager } from 'nipplejs';
@@ -43,7 +43,7 @@ export class MotionService {
         if (on) {
             this.player.scene.engine.input.keyboard.on(Release, () => {
                 this.player.vel.setTo(0, 0);
-                this.player.graphics.use(ActorAnimations.IDLE);
+                this.player.graphics.use(ActorAnimationsKeys.IDLE);
                 this.endMoveFn();
             });
             this.player.scene.engine.input.keyboard.on(Hold, (evt) => {
@@ -96,7 +96,7 @@ export class MotionService {
             joystickManager.on('end', () => {
                 this.player.rotation = toRadians(0);
                 this.player.vel.setTo(0, 0);
-                this.player.graphics.use(ActorAnimations.IDLE);
+                this.player.graphics.use(ActorAnimationsKeys.IDLE);
                 this.endMoveFn();
             });
         }
@@ -104,8 +104,8 @@ export class MotionService {
 
     private run({x, y}: Speed, horizontalFlip: boolean) {
         this.player.vel.setTo(x, y);
-        this.player.graphics.use(ActorAnimations.RUN);
-        this.player.graphics.getGraphic(ActorAnimations.RUN).flipHorizontal = horizontalFlip;
+        this.player.graphics.use(ActorAnimationsKeys.RUN);
+        this.player.graphics.getGraphic(ActorAnimationsKeys.RUN).flipHorizontal = horizontalFlip;
     }
 
 }

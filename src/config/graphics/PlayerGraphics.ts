@@ -1,7 +1,7 @@
 import { Animation, ImageSource, range, SpriteSheet } from 'excalibur';
 import botSpriteSheet from '../../assets/robot/tilesheet/character_robot_sheet.png'
 import botHurt from '../../assets/robot/png/poses/character_robot_hurt.png';
-import { ActorAnimation, SpriteConfig } from '../../types/GraphicTypes';
+import { ActorAnimation, ActorSpriteConfig } from '../../types/GraphicTypes';
 
 export module PlayerGraphics {
 
@@ -18,7 +18,7 @@ export module PlayerGraphics {
         }
     });
 
-    export const sprites: SpriteConfig = {
+    export const sprites: ActorSpriteConfig = {
         sheet: botSpriteSheetSource,
         hurt: botHurtSource
     }

@@ -3,7 +3,7 @@ import { ExcaliburActor } from './ExcaliburActor';
 import { Engine } from 'excalibur';
 import { MotionService } from '../services/MotionService';
 import { Container } from 'typedi';
-import { ActorAnimations } from '../util/ActorAnimations';
+import { ActorAnimationsKeys } from '../config/graphics/keys/ActorTextureKeys';
 import { HorizontalParallaxService } from '../services/HorizontalParallaxService';
 
 export class Player extends ExcaliburActor {
@@ -13,7 +13,7 @@ export class Player extends ExcaliburActor {
 
     public onInitialize(_engine: Engine) {
         super.onInitialize(_engine);
-        this.graphics.use(ActorAnimations.IDLE);
+        this.graphics.use(ActorAnimationsKeys.IDLE);
         this.configureMotionService();
     }
 
