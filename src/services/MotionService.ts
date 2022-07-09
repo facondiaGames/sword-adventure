@@ -59,14 +59,6 @@ export class MotionService {
                     case Input.Keys.Right:
                         dir = Vector.Right;
                         break;
-                    case Input.Keys.S:
-                    case Input.Keys.Down:
-                        dir = Vector.Down;
-                        break;
-                    case Input.Keys.W:
-                    case Input.Keys.Up:
-                        dir = Vector.Up;
-                        break;
                     default:
                         return;
                 }
@@ -86,9 +78,8 @@ export class MotionService {
             const joystickManager: JoystickManager = this.joystickFactory.getJoystick();
             joystickManager.on('move', (event, data) => {
                 const {vector, direction} = data;
-                if (direction?.x && direction?.y) {
-                    const yMapper: number = this.yMapping[direction.y];
-                    const speed: Speed = {x: vector.x * this.speedMultiplier, y: Math.abs(vector.y) * yMapper * this.speedMultiplier};
+                if (direction?.x) {
+                    const speed: Speed = {x: vector.x * this.speedMultiplier,y:0};
                     const horizontalFlip: boolean = direction.angle === 'left';
                     this.run(speed, horizontalFlip);
                 }

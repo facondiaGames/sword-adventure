@@ -15,7 +15,7 @@ export module HorizontalParallaxConfig {
             layer1: scene => {
                 const tileNumber = 2;
                 const heightScaling = 1;
-                const {layerWidth, layerHeight} = getGrahicTileSize(tileNumber, heightScaling);
+                const {layerWidth, layerHeight} = getGraphicTileSize(tileNumber, heightScaling);
                 const tiles = buildGraphicTile(tileNumber, 'layer1', {height: layerHeight, width: layerWidth});
                 const height: number = scene.camera.viewport.height;
                 tiles.forEach((tile, index) => {
@@ -34,7 +34,7 @@ export module HorizontalParallaxConfig {
             layer2: scene => {
                 const tileNumber =6;
                 const heightScaling = 0.8;
-                const {layerWidth, layerHeight} = getGrahicTileSize(tileNumber, heightScaling);
+                const {layerWidth, layerHeight} = getGraphicTileSize(tileNumber, heightScaling);
                 const tiles = buildGraphicTile(tileNumber, 'layer2', {height: layerHeight, width: layerWidth});
                 const height: number = scene.camera.viewport.height;
                 const queryManagerService = Container.get(QueryManagerService);
@@ -56,7 +56,7 @@ export module HorizontalParallaxConfig {
             layer3: scene => {
                 const tileNumber = 8;
                 const heightScaling = 0.2;
-                const {layerWidth, layerHeight} = getGrahicTileSize(tileNumber, heightScaling);
+                const {layerWidth, layerHeight} = getGraphicTileSize(tileNumber, heightScaling);
                 const tiles = buildGraphicTile(tileNumber, 'layer3', {height: layerHeight, width: layerWidth});
                 const height: number = scene.camera.viewport.height;
                 const queryManagerService = Container.get(QueryManagerService);
@@ -78,7 +78,7 @@ export module HorizontalParallaxConfig {
             layer4: scene => {
                 const tileNumber = 10;
                 const heightScaling = 0.02;
-                const {layerWidth, layerHeight} = getGrahicTileSize(tileNumber, heightScaling);
+                const {layerWidth, layerHeight} = getGraphicTileSize(tileNumber, heightScaling);
                 const tiles = buildGraphicTile(tileNumber, 'layer4', {height: layerHeight, width: layerWidth});
                 tiles.forEach(tile => {
                     tile.body.collisionType = CollisionType.Fixed;
@@ -118,7 +118,7 @@ export module HorizontalParallaxConfig {
         layer4: {x: 0, y: 0},
     }
 
-    function getGrahicTileSize(tileNumber: number, layerHeightScale: number) {
+    function getGraphicTileSize(tileNumber: number, layerHeightScale: number) {
         const deviceService = Container.get(DeviceService);
         const {vw, vh} = deviceService.getViewportSize();
         const layerWidth: number = vw / (tileNumber - 1);
