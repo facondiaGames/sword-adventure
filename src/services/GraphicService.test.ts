@@ -18,7 +18,7 @@ describe('GraphicService', () => {
         it('should register actor graphics', () => {
             const actor: Actor = new Actor();
             const expected: Graphic = mock(Graphic);
-            const actorGraphic: ActorGraphic = {player: [{graphic: expected, name: 'hurt'}]};
+            const actorGraphic: ActorGraphic = {player: [{graphic: expected, name: 'hurt'}]} as ActorGraphic;
             when(allGraphics.actorTextures).thenReturn(actorGraphic)
 
             graphicService.registerActorGraphics('player', actor);
@@ -31,7 +31,7 @@ describe('GraphicService', () => {
         it('should register actor animations', () => {
             const actor: Actor = new Actor();
             const expected: Animation = mock(Animation);
-            const actorAnimations: ActorAnimations = {player: [{animation: expected, name: 'run'}]};
+            const actorAnimations: ActorAnimations = {player: [{animation: expected, name: 'run'}]} as ActorAnimations;
             when(allGraphics.animations).thenReturn(actorAnimations)
 
             graphicService.registerActorAnimations('player', actor);

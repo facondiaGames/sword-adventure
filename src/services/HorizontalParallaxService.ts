@@ -14,7 +14,6 @@ export class HorizontalParallaxService {
         const cameraConfig = HorizontalParallaxConfig.cameraParallaxConfig[sceneKey];
         cameraConfig(scene);
         const layerTypes: ParallaxType[] = ['layer4','layer3','layer2', 'layer1'];
-        //const layerTypes: ParallaxType[] = ['layer4',];
         layerTypes.forEach(layerType => {
             const sceneLayerConfig = HorizontalParallaxConfig.perSceneParallaxConfig[sceneKey][layerType];
             sceneLayerConfig(scene);

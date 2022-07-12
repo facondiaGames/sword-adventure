@@ -4,20 +4,25 @@ import { ActorAnimations, ActorGraphic, ParallaxGraphic } from '../../types/Grap
 import { ParallaxGraphics } from './ParallaxGraphics';
 import { ParallaxTexturesKeys } from './keys/ParallaxTextureKeys';
 import { ActorAnimationsKeys } from './keys/ActorTextureKeys';
+import { MentorGraphics } from './MentorGraphics';
 
 export module AllGraphics {
 
-    export const animations: ActorAnimations = {
+    export const animations: Partial<ActorAnimations> = {
         player: [
             {name: ActorAnimationsKeys.IDLE, animation: PlayerGraphics.animations.idle},
             {name: ActorAnimationsKeys.RUN, animation: PlayerGraphics.animations.run},
-        ]
+        ],
     }
 
-    export const actorTextures: ActorGraphic = {
+    export const actorTextures: Partial<ActorGraphic> = {
         player: [
             {name: ActorAnimationsKeys.HURT, graphic: toSprite(PlayerGraphics.sprites.hurt)},
-        ]
+        ],
+        mentor: [
+            {name: ActorAnimationsKeys.IDLE, graphic: toSprite(MentorGraphics.sprites.idle)},
+            {name: ActorAnimationsKeys.HELLO, graphic: toSprite(MentorGraphics.sprites.hello)},
+        ],
     }
 
     export const parallaxGraphic: ParallaxGraphic = {

@@ -3,7 +3,8 @@ import { ActorType, ParallaxType } from '../types/BasicTypes';
 export module ZIndexes {
 
     export const actors: { [key in ActorType]: number } = {
-        player: 100
+        player: 100,
+        mentor: 100,
     };
 
     export const layers: { [key in ParallaxType]: number } = {

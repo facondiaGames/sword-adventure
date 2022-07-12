@@ -12,7 +12,7 @@ export type ParallaxGraphic = {
 export type ActorSpriteConfig = {
     sheet: ImageSource
 } & {
-    [key in ActorGraphicName]: ImageSource
+    [key in ActorGraphicName | ActorAnimationName]: ImageSource
 }
 
 export type ParallaxSpriteConfig = {
@@ -21,9 +21,9 @@ export type ParallaxSpriteConfig = {
 
 export type ActorAnimation = { [key in ActorAnimationName]: Animation };
 
-export type ActorGraphicConfig = { name: ActorGraphicName, graphic: Graphic };
+export type ActorGraphicConfig = { name: ActorGraphicName | ActorAnimationName, graphic: Graphic };
 export type ParallaxGraphicConfig = { name: ParallaxGraphicName, graphic: Graphic };
-export type ActorAnimationName = 'idle' | 'run';
+export type ActorAnimationName = 'idle' | 'run' | 'hello';
 export type ActorGraphicName = 'hurt';
 export type ParallaxGraphicName = 'castle' | 'tree' | 'treeLong' | 'bush' | 'orangeBush' | 'stoneGrass' | 'empty';
 

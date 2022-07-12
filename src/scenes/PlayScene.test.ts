@@ -26,9 +26,12 @@ describe('PlayScene', () => {
 
         scene.onInitialize();
 
-        const actors: Actor[] = scene.actors.filter(actor => actor.tags.includes(Tags.ACTORS.player));
-        expect(actors.length).toBe(1);
+        const playerActors: Actor[] = scene.actors.filter(actor => actor.tags.includes(Tags.ACTORS.player));
+        expect(playerActors.length).toBe(1);
+        const mentorActors: Actor[] = scene.actors.filter(actor => actor.tags.includes(Tags.ACTORS.mentor));
+        expect(mentorActors.length).toBe(1);
         verify(actorFactory.createPlayer(anything())).once();
+        verify(actorFactory.createMentor(anything())).once();
         verify(parallaxService.configureParallax('playLevel', scene)).once();
     });
 

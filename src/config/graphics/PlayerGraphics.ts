@@ -18,12 +18,12 @@ export module PlayerGraphics {
         }
     });
 
-    export const sprites: ActorSpriteConfig = {
+    export const sprites: Partial<ActorSpriteConfig> = {
         sheet: botSpriteSheetSource,
         hurt: botHurtSource
     }
 
-    export const animations: ActorAnimation = {
+    export const animations: Partial<ActorAnimation> = {
         idle: Animation.fromSpriteSheet(botSheet, range(0, 0), 100),
         run: Animation.fromSpriteSheet(botSheet, range(25, 27), 100)
     }

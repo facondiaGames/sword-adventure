@@ -3,6 +3,7 @@ import { ActorAnimationName, ActorGraphicName } from '../../../types/GraphicType
 export module ActorAnimationsKeys {
 
     export const IDLE: ActorAnimationName = 'idle';
+    export const HELLO: ActorAnimationName = 'hello';
     export const RUN: ActorAnimationName = 'run';
     export const HURT: ActorGraphicName = 'hurt';
 

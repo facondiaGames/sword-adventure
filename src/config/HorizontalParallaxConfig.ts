@@ -113,8 +113,8 @@ export module HorizontalParallaxConfig {
     export const headedRightVelocitiesMagnitude: { [key in ParallaxType | 'camera']: { x: number, y: number } } = {
         camera: {x: 20, y: 0},
         layer1: {x: -5, y: 0},
-        layer2: {x: -40, y: 0},
-        layer3: {x: -60, y: 0},
+        layer2: {x: -10, y: 0},
+        layer3: {x: 0, y: 0},
         layer4: {x: 0, y: 0},
     }
 
