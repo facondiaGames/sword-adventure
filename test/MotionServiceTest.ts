@@ -22,6 +22,7 @@ describe('MotionService', () => {
     testScene = scene;
     testGame = game;
     joystickFactorySpy = spy(Container.get(JoystickFactory));
+    motionService = new MotionService();
   });
 
   afterEach(() => {
@@ -31,7 +32,6 @@ describe('MotionService', () => {
   it('should register keyboard listeners and unregister joystick listener', () => {
     const actor: Actor = new Actor();
     testScene.add(actor);
-    motionService = new MotionService();
     const emptyFunction = () => { /* do nothing */ };
     motionService.setPlayer(actor, emptyFunction, emptyFunction);
     const keyboardSpy: Keyboard = spy(testScene.engine.input.keyboard);
@@ -47,7 +47,6 @@ describe('MotionService', () => {
   it('should register joystick listener and unregister keyboard listener', () => {
     const actor: Actor = new Actor();
     testScene.add(actor);
-    motionService = new MotionService();
     const emptyFunction = () => { /* do nothing */ };
     motionService.setPlayer(actor, emptyFunction, emptyFunction);
     const keyboardSpy: Keyboard = spy(testScene.engine.input.keyboard);

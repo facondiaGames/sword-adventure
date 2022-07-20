@@ -1,6 +1,7 @@
 const path = require("path");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     experiments: {
@@ -65,5 +66,10 @@ module.exports = {
             title: "Sword Adventure",
             template: "src/index.html"
         }),
+        new CopyPlugin({
+            patterns: [
+                {from: "src/twinery-dialog/**.html", to: "twinery-dialog/[name][ext]"},
+            ]
+        })
     ],
 };

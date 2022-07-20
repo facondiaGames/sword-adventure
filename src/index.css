@@ -34,3 +34,12 @@ body {
 .white-text {
     color: white;
 }
+
+.position-absolute {
+    position: absolute;
+}
+
+.position-top {
+    top: 0;
+    left: 0;
+}

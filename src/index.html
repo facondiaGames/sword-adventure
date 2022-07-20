@@ -19,11 +19,15 @@
 </head>
 
 <body>
-<div class="absolute-bottom full-width flex-row flex--justify-center">
+<div class="absolute-bottom full-width flex-row flex--justify-center" id="loader-container">
     <div class='white-text' id="loader-progress"></div>
 </div>
 <div class="joystick" id="joystick"></div>
+
 <canvas id="game" style="display: block; margin: auto auto"></canvas>
+
+<div class="position-absolute position-top full-size" id="iframe-container" style="visibility: hidden;"></div>
+
 </body>
 
 </html>

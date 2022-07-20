@@ -4,17 +4,20 @@ import { ActorType } from '../types/BasicTypes';
 import { ExcaliburActor } from './ExcaliburActor';
 import { ActorAnimationsKeys } from '../config/graphics/keys/ActorTextureKeys';
 import { QueryManagerService } from '../services/QueryManagerService';
+import { IFrameService } from '../services/IFrameService';
 
 export class Mentor extends ExcaliburActor {
   public type: ActorType = 'mentor';
 
   private queryManagerService = Container.get(QueryManagerService);
 
+  private iFrameService = Container.get(IFrameService);
+
   public onInitialize(_engine: Engine) {
     super.onInitialize(_engine);
     this.graphics.use(ActorAnimationsKeys.IDLE);
     this.on('pointerdown', () => {
-      alert('Hi, let\'s have a chat!');
+      this.iFrameService.toggleIFrame(true);
     });
   }
 
