@@ -17,22 +17,22 @@ describe('MotionService', () => {
   let testScene: TestScene;
   let testGame: Game;
 
-  beforeEach(async () => {
-    const { scene, game } = await ExcaliburTestUtils.anExcaliburJSGame();
-    testScene = scene;
-    testGame = game;
-    joystickFactorySpy = spy(Container.get(JoystickFactory));
-  });
+    beforeEach(async () => {
+        const {scene, game} = await ExcaliburTestUtils.anExcaliburJSGame();
+        testScene = scene;
+        testGame = game;
+        joystickFactorySpy = spy(Container.get(JoystickFactory));
+        motionService = new MotionService();
+    });
 
   afterEach(() => {
     reset(joystickFactorySpy);
   });
 
-  it('should register keyboard listeners and unregister joystick listener', () => {
-    const actor: Actor = new Actor();
-    testScene.add(actor);
-    motionService = new MotionService();
-    const emptyFunction = () => { /* do nothing */ };
+    it('should register keyboard listeners and unregister joystick listener', () => {
+        const actor: Actor = new Actor();
+        testScene.add(actor);
+        const emptyFunction = () => {/* do nothing */};
     motionService.setPlayer(actor, emptyFunction, emptyFunction);
     const keyboardSpy: Keyboard = spy(testScene.engine.input.keyboard);
 
@@ -44,11 +44,10 @@ describe('MotionService', () => {
     verify(joystickFactorySpy.destroy()).once();
   });
 
-  it('should register joystick listener and unregister keyboard listener', () => {
-    const actor: Actor = new Actor();
-    testScene.add(actor);
-    motionService = new MotionService();
-    const emptyFunction = () => { /* do nothing */ };
+    it('should register joystick listener and unregister keyboard listener', () => {
+        const actor: Actor = new Actor();
+        testScene.add(actor);
+        const emptyFunction = () => {/* do nothing */};
     motionService.setPlayer(actor, emptyFunction, emptyFunction);
     const keyboardSpy: Keyboard = spy(testScene.engine.input.keyboard);
     const joystickManagerMock: JoystickManager = mock(JoystickManager);
