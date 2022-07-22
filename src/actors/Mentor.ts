@@ -10,13 +10,14 @@ export class Mentor extends ExcaliburActor {
   public type: ActorType = 'mentor';
 
   private queryManagerService = Container.get(QueryManagerService);
-    private iFrameService = Container.get(IFrameService);
 
-    public onInitialize(_engine: Engine) {
-        super.onInitialize(_engine);
-        this.graphics.use(ActorAnimationsKeys.IDLE);
-        this.on('pointerdown', () => {
-           this.iFrameService.toggleIFrame(true);
+  private iFrameService = Container.get(IFrameService);
+
+  public onInitialize(_engine: Engine) {
+    super.onInitialize(_engine);
+    this.graphics.use(ActorAnimationsKeys.IDLE);
+    this.on('pointerdown', () => {
+      this.iFrameService.toggleIFrame(true);
     });
   }
 

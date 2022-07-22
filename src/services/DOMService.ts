@@ -24,44 +24,45 @@ export class DOMService {
   public removeElement(elementId: DomElementIds): void {
     const element = this.getElement(elementId);
     element?.remove();
-    }
+  }
 
-    public toggleElementVisibility(elementId: DomElementIds,visible:boolean){
-        const exist = this.elementExist(elementId);
-        if(exist){
-            const element = this.getElement(elementId);
-            element.style.visibility = visible ? 'visible' : 'hidden';
-        }
+  public toggleElementVisibility(elementId: DomElementIds, visible:boolean) {
+    const exist = this.elementExist(elementId);
+    if (exist) {
+      const element = this.getElement(elementId);
+      element.style.visibility = visible ? 'visible' : 'hidden';
     }
+  }
 
-    public createHTMLElement({id, tagName, classes, parentContainer, attributes}: HTMLElementConfig){
-        const htmlElement = document.createElement(tagName);
-        htmlElement.id = id;
-        if(Util.isDefined(parentContainer)){
-            parentContainer.appendChild(htmlElement);
-        } else {
-            document.body.appendChild(htmlElement);
-        }
-        classes?.forEach(c => htmlElement.classList.add(c));
-        attributes?.forEach(({name: attributeName, value: attributeValue}) => htmlElement.setAttribute(attributeName, attributeValue));
-        this.map.set(id, htmlElement);
-        return htmlElement;
+  public createHTMLElement({
+    id, tagName, classes, parentContainer, attributes,
+  }: HTMLElementConfig) {
+    const htmlElement = document.createElement(tagName);
+    htmlElement.id = id;
+    if (Util.isDefined(parentContainer)) {
+      parentContainer.appendChild(htmlElement);
+    } else {
+      document.body.appendChild(htmlElement);
     }
+    classes?.forEach((c) => htmlElement.classList.add(c));
+    attributes?.forEach(({ name: attributeName, value: attributeValue }) => htmlElement.setAttribute(attributeName, attributeValue));
+    this.map.set(id, htmlElement);
+    return htmlElement;
+  }
 }
 
 export const uiConfig: UiDivConfig = {
-    rootDivId: 'root',
-    gameCanvaId: 'game',
-    loaderProgressId: 'loader-progress',
-    iFrameContainerDiv: 'iframe-container',
-    iframe: 'iframe',
-    loaderContainerDiv: 'loader-container'
+  rootDivId: 'root',
+  gameCanvaId: 'game',
+  loaderProgressId: 'loader-progress',
+  iFrameContainerDiv: 'iframe-container',
+  iframe: 'iframe',
+  loaderContainerDiv: 'loader-container',
 };
-
 
 export type DomElementIds = 'root' | 'game' |'loader-container' |'loader-progress' | 'joystick' | 'iframe-container' | 'iframe';
 export type DomElementKeys = 'rootDivId' | 'gameCanvaId' | 'loaderContainerDiv'| 'loaderProgressId' | 'iFrameContainerDiv' | 'iframe';
 
 export type UiDivConfig = { [key in DomElementKeys]: DomElementIds }
-export type HTMLElementConfig = {tagName:string,id:DomElementIds,classes?:string[], parentContainer?:HTMLElement, attributes?:HTMLElementAttribute[]}
+export type HTMLElementConfig = {tagName:string, id:DomElementIds, classes?:string[], parentContainer?:HTMLElement, attributes?:HTMLElementAttribute[]}
 export type HTMLElementAttribute = {name:string, value:string};
