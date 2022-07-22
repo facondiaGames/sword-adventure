@@ -8,7 +8,7 @@ const parallaxImages: ImageSource[] = Object.values(ParallaxGraphics.sprites);
 const mentorImages: ImageSource[] = Object.values(MentorGraphics.sprites);
 
 export const allResources: ImageSource[] = [
-    ...playerImages,
-    ...parallaxImages,
-    ...mentorImages
-]
+  ...playerImages,
+  ...parallaxImages,
+  ...mentorImages,
+];

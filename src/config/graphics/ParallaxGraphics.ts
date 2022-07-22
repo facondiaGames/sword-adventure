@@ -5,7 +5,7 @@ import bushOrangeImage from '../../assets/background-elements-redux-fix/PNG/Reti
 import treeImage from '../../assets/background-elements-redux-fix/PNG/Retina/tree.png';
 import emptyImage from '../../assets/empty.png';
 import treeLongImage from '../../assets/background-elements-redux-fix/PNG/Retina/treeLong.png';
-import castleBackgroundImage from '../../assets/background-elements-redux-fix/Backgrounds/backgroundCastles.png'
+import castleBackgroundImage from '../../assets/background-elements-redux-fix/Backgrounds/backgroundCastles.png';
 import { ParallaxSpriteConfig } from '../../types/GraphicTypes';
 
 export module ParallaxGraphics {
@@ -19,16 +19,13 @@ export module ParallaxGraphics {
     const empty = new ImageSource(emptyImage);
 
     export const sprites: ParallaxSpriteConfig = {
-        castle: castles,
-        orangeBush: orangeBush,
-        bush: bush,
-        tree: tree,
-        treeLong: treeLong,
-        stoneGrass: stoneGrass,
-        empty: empty,
-    }
+      castle: castles,
+      orangeBush,
+      bush,
+      tree,
+      treeLong,
+      stoneGrass,
+      empty,
+    };
 
 }
-
-
-

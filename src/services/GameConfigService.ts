@@ -5,16 +5,14 @@ import { GameConfig, PhysicsConfig } from '../types/Types';
 
 @Service()
 export class GameConfigService {
+  private deviceService: DeviceService = Container.get(DeviceService);
 
-    private deviceService: DeviceService = Container.get(DeviceService);
+  public getPhysicsConfig(): PhysicsConfig {
+    return Configs.physics;
+  }
 
-    public getPhysicsConfig(): PhysicsConfig {
-        return Configs.physics;
-    }
-
-    public getDeviceConfig(): GameConfig {
-        const deviceSize = this.deviceService.getDeviceSize();
-        return Configs.device[deviceSize];
-    }
-
+  public getDeviceConfig(): GameConfig {
+    const deviceSize = this.deviceService.getDeviceSize();
+    return Configs.device[deviceSize];
+  }
 }

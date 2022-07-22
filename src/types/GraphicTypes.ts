@@ -1,5 +1,5 @@
-import { ActorType, ParallaxType } from './BasicTypes';
 import { Animation, Graphic, ImageSource } from 'excalibur';
+import { ActorType, ParallaxType } from './BasicTypes';
 
 export type ActorGraphic = {
     [key in ActorType]: ActorGraphicConfig[]

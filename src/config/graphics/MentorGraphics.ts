@@ -9,9 +9,8 @@ export module MentorGraphics {
     const mentorHello = new ImageSource(mentorHelloSource);
 
     export const sprites: Partial<ActorSpriteConfig> = {
-        idle: mentorIdle,
-        hello: mentorHello
-    }
+      idle: mentorIdle,
+      hello: mentorHello,
+    };
 
 }
-
