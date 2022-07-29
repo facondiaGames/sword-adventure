@@ -5,6 +5,8 @@ import { ParallaxGraphics } from './ParallaxGraphics';
 import { ParallaxTexturesKeys } from './keys/ParallaxTextureKeys';
 import { ActorAnimationsKeys } from './keys/ActorTextureKeys';
 import { MentorGraphics } from './MentorGraphics';
+import { CoinGraphics } from './CoinGraphics';
+import { SwordGraphics } from './SwordGraphics';
 
 export module AllGraphics {
 
@@ -23,6 +25,13 @@ export module AllGraphics {
         { name: ActorAnimationsKeys.IDLE, graphic: toSprite(MentorGraphics.sprites.idle) },
         { name: ActorAnimationsKeys.HELLO, graphic: toSprite(MentorGraphics.sprites.hello) },
       ],
+      coin: [
+        {name: ActorAnimationsKeys.IDLE, graphic: toSprite(CoinGraphics.sprites.idle)}
+      ],
+        sword: [
+        {name: ActorAnimationsKeys.IDLE, graphic: toSprite(SwordGraphics.sprites.idle)}
+      ]
+
     };
 
     export const parallaxGraphic: ParallaxGraphic = {

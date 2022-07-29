@@ -19,7 +19,7 @@ export abstract class ExcaliburActor extends Actor {
         color,
         collisionType,
         collider,
-        collisionGroup: CollisionGroupManager.create(collisionGroupKey),
+        collisionGroup: CollisionGroupManager.groupByName(collisionGroupKey) ? CollisionGroupManager.groupByName(collisionGroupKey) : CollisionGroupManager.create(collisionGroupKey),
       });
       this.addTag(tag);
     }

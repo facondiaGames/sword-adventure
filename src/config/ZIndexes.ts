@@ -5,6 +5,8 @@ export module ZIndexes {
     export const actors: { [key in ActorType]: number } = {
       player: 100,
       mentor: 100,
+      coin: 100,
+      sword: 100
     };
 
     export const layers: { [key in ParallaxType]: number } = {

@@ -12,13 +12,16 @@ export class HorizontalParallaxService {
   private queryManagerService = Container.get(QueryManagerService);
 
   public configureParallax(sceneKey: SceneKeys, scene: Scene) {
-    const cameraConfig = HorizontalParallaxConfig.cameraParallaxConfig[sceneKey];
-    cameraConfig(scene);
     const layerTypes: ParallaxType[] = ['layer4', 'layer3', 'layer2', 'layer1'];
     layerTypes.forEach((layerType) => {
       const sceneLayerConfig = HorizontalParallaxConfig.perSceneParallaxConfig[sceneKey][layerType];
       sceneLayerConfig(scene);
     });
+  }
+
+  public configureCamera(sceneKey: SceneKeys, scene: Scene){
+    const cameraConfig = HorizontalParallaxConfig.cameraParallaxConfig[sceneKey];
+    cameraConfig(scene);
   }
 
   public startParallax(directionFactor: number, scene: Scene) {
