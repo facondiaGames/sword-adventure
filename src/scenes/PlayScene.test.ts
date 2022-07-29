@@ -3,11 +3,11 @@ import {
   anything, reset, spy, verify,
 } from 'ts-mockito';
 import { Actor, Scene } from 'excalibur';
+import { ActorType } from 'types/BasicTypes';
 import { PlayScene } from './PlayScene';
 import { ActorFactory } from '../services/ActorFactory';
 import { HorizontalParallaxService } from '../services/HorizontalParallaxService';
 import { Tags } from '../config/Tags';
-import { ActorType } from 'types/BasicTypes';
 
 describe('PlayScene', () => {
   let actorFactory: ActorFactory;
@@ -36,13 +36,11 @@ describe('PlayScene', () => {
     checkActorTags(scene);
   });
 
-  function checkActorTags(scene: Scene){
-    Array.from(Object.entries(Tags.ACTORS)).forEach(([actorType,tag]) => {
-        const expected = actorType as any as ActorType === 'coin' ? 2 : 1;
-        const actors: Actor[] = scene.actors.filter((actor) => actor.tags.includes(tag));
-        expect(actors.length).toBe(expected);
+  function checkActorTags(scene: Scene) {
+    Array.from(Object.entries(Tags.ACTORS)).forEach(([actorType, tag]) => {
+      const expected = actorType as any as ActorType === 'coin' ? 2 : 1;
+      const actors: Actor[] = scene.actors.filter((actor) => actor.tags.includes(tag));
+      expect(actors.length).toBe(expected);
     });
-
   }
-
 });

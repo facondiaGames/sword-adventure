@@ -7,6 +7,6 @@ export module SwordGraphics {
     const idle = new ImageSource(idleSource);
 
     export const sprites: Partial<ActorSpriteConfig> = {
-      idle
+      idle,
     };
 }

@@ -7,7 +7,7 @@ export module CoinGraphics {
     const idle = new ImageSource(idleSource);
 
     export const sprites: Partial<ActorSpriteConfig> = {
-      idle
+      idle,
     };
 
 }

@@ -16,5 +16,5 @@ export const allResources: ImageSource[] = [
   ...parallaxImages,
   ...mentorImages,
   ...coinImages,
-  ...swordImages
+  ...swordImages,
 ];

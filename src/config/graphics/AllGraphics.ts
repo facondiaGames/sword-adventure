@@ -26,11 +26,11 @@ export module AllGraphics {
         { name: ActorAnimationsKeys.HELLO, graphic: toSprite(MentorGraphics.sprites.hello) },
       ],
       coin: [
-        {name: ActorAnimationsKeys.IDLE, graphic: toSprite(CoinGraphics.sprites.idle)}
+        { name: ActorAnimationsKeys.IDLE, graphic: toSprite(CoinGraphics.sprites.idle) },
       ],
-        sword: [
-        {name: ActorAnimationsKeys.IDLE, graphic: toSprite(SwordGraphics.sprites.idle)}
-      ]
+      sword: [
+        { name: ActorAnimationsKeys.IDLE, graphic: toSprite(SwordGraphics.sprites.idle) },
+      ],
 
     };
 

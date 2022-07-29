@@ -58,10 +58,16 @@ export const uiConfig: UiDivConfig = {
   iFrameContainerDiv: 'iframe-container',
   iframe: 'iframe',
   loaderContainerDiv: 'loader-container',
+  modalContainerDiv: 'modal-container',
+  coinsScoreDiv: 'coins-score',
 };
 
-export type DomElementIds = 'root' | 'game' |'loader-container' |'loader-progress' | 'joystick' | 'iframe-container' | 'iframe';
-export type DomElementKeys = 'rootDivId' | 'gameCanvaId' | 'loaderContainerDiv'| 'loaderProgressId' | 'iFrameContainerDiv' | 'iframe';
+export type DomElementIds = 'root' | 'game' |'loader-container' |'loader-progress' | 'joystick'
+| 'iframe-container' | 'iframe'
+| 'modal-container' | 'coins-text' | 'coins-score';
+export type DomElementKeys = 'rootDivId' | 'gameCanvaId' | 'loaderContainerDiv'| 'loaderProgressId'
+| 'iFrameContainerDiv' | 'iframe'
+| 'modalContainerDiv' | 'coinsScoreDiv';
 
 export type UiDivConfig = { [key in DomElementKeys]: DomElementIds }
 export type HTMLElementConfig = {tagName:string, id:DomElementIds, classes?:string[], parentContainer?:HTMLElement, attributes?:HTMLElementAttribute[]}

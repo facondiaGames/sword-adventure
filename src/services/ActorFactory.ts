@@ -21,10 +21,9 @@ export class ActorFactory {
     return new Mentor(actorArgs, actorConfig);
   }
 
-  public createLevelStateModifier(type: LevelStateModifierType,actorArgs: ActorArgs): LevelStateModifier {
+  public createLevelStateModifier(type: LevelStateModifierType, actorArgs: ActorArgs): LevelStateModifier {
     const { ACTORS, COLLISION_GROUPS } = Tags;
     const actorConfig: ActorConfig = { tag: ACTORS[type], collisionGroupKey: COLLISION_GROUPS[type] };
-    return new LevelStateModifier(type,actorArgs, actorConfig);
+    return new LevelStateModifier(type, actorArgs, actorConfig);
   }
-
 }

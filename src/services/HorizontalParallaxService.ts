@@ -19,7 +19,7 @@ export class HorizontalParallaxService {
     });
   }
 
-  public configureCamera(sceneKey: SceneKeys, scene: Scene){
+  public configureCamera(sceneKey: SceneKeys, scene: Scene) {
     const cameraConfig = HorizontalParallaxConfig.cameraParallaxConfig[sceneKey];
     cameraConfig(scene);
   }

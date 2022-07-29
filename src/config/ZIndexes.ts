@@ -6,7 +6,7 @@ export module ZIndexes {
       player: 100,
       mentor: 100,
       coin: 100,
-      sword: 100
+      sword: 100,
     };
 
     export const layers: { [key in ParallaxType]: number } = {
