@@ -1,5 +1,6 @@
 import { Container } from 'typedi';
 import {
+  Actor,
   Axis, CollisionType, Scene, Shape, vec,
 } from 'excalibur';
 import { DeviceService } from '../services/DeviceService';
@@ -105,10 +106,8 @@ export module HorizontalParallaxConfig {
     };
 
     export const cameraParallaxConfig: CameraParallaxSceneConfig = {
-      playLevel: (scene) => {
-        const queryManagerService: QueryManagerService = Container.get(QueryManagerService);
-        const player = queryManagerService.getPlayer(scene);
-        scene.camera.strategy.lockToActorAxis(player, Axis.X);
+      playLevel: (actor) => {
+        actor.scene.camera.strategy.lockToActorAxis(actor, Axis.X);
       },
     };
 
@@ -148,4 +147,4 @@ export module HorizontalParallaxConfig {
 }
 
 type ParallaxConfig<K extends ParallaxType> = Partial<{ [key in SceneKeys]: Partial<{ [parallaxKey in K]: (scene: Scene) => void }> }>;
-type CameraParallaxSceneConfig = Partial<{ [key in SceneKeys]: (scene: Scene) => void }>
+type CameraParallaxSceneConfig = Partial<{ [key in SceneKeys]: (actor?:Actor) => void }>

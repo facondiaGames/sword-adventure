@@ -21,6 +21,7 @@ export class DevelService {
     });
     this.createCameraDebugButton(containerDiv);
     this.createGameDebugButton(containerDiv);
+    this.createEndOfLevelModalButton(containerDiv);
     document.body.appendChild(containerDiv);
   }
 
@@ -62,6 +63,16 @@ export class DevelService {
     button.onclick = () => {
       this.gameDebugOn = !this.gameDebugOn;
       game.showDebug(this.gameDebugOn);
+    };
+    containerDiv.appendChild(button);
+  }
+
+  private createEndOfLevelModalButton(containerDiv: HTMLDivElement) {
+    const button: HTMLButtonElement = document.createElement('button');
+    button.textContent = 'modal debug';
+    const game = Game.getInstance();
+    button.onclick = () => {
+      game.goTo('menuLevel');
     };
     containerDiv.appendChild(button);
   }

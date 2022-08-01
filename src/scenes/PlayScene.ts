@@ -1,5 +1,5 @@
 import {
-  ActorArgs, CollisionType, Engine, Scene, Shape, vec,
+  ActorArgs, CollisionType, Scene, Shape, vec,
 } from 'excalibur';
 import { Container } from 'typedi';
 import { Player } from '../actors/Player';
@@ -7,6 +7,7 @@ import { ActorFactory } from '../services/ActorFactory';
 import { HorizontalParallaxService } from '../services/HorizontalParallaxService';
 import { Mentor } from '../actors/Mentor';
 import { PlayLevelLogicService } from '../services/PlayLevelLogicService';
+import { DOMService } from '../services/DOMService';
 
 export class PlayScene extends Scene {
   private actorFactory: ActorFactory = Container.get(ActorFactory);
@@ -15,24 +16,25 @@ export class PlayScene extends Scene {
 
   private levelLogicService: PlayLevelLogicService = Container.get(PlayLevelLogicService);
 
-  public onInitialize(): void {
-    this.addPlayer();
+  private domService = Container.get(DOMService);
+
+  public onActivate(): void {
+    const player = this.addPlayer();
     this.addMentor();
     this.addCoins();
     this.addSword();
     this.parallaxService.configureParallax('playLevel', this);
-    this.parallaxService.configureCamera('playLevel', this);
-  }
-
-  public onActivate(): void {
+    this.parallaxService.configureCamera('playLevel', player);
     this.levelLogicService.startStateMachine();
+    this.domService.toggleElementVisibility('menu', false);
   }
 
-  public onDeactivate(_oldScene: Scene, _newScene: Scene): void {
+  public onDeactivate(): void {
     this.levelLogicService.destroyStateMachine();
+    this.clear();
   }
 
-  private addPlayer(): void {
+  private addPlayer() {
     const imageSize = 128;
     const xPos = this.camera.viewport.right / 2;
     const yPos = this.camera.viewport.height - imageSize / 2;
@@ -45,6 +47,7 @@ export class PlayScene extends Scene {
     };
     const player: Player = this.actorFactory.createPlayer(args);
     this.add(player);
+    return player;
   }
 
   private addMentor(): void {
@@ -63,6 +66,7 @@ export class PlayScene extends Scene {
 
   private addCoins(): void {
     const imageSize = 90;
+    // TODO I would expect coins to be positioned in the same place every time, but they are not. The viewport size is changing, why?
     const yPos = this.camera.viewport.height - imageSize / 2;
     const pos1 = vec(this.camera.viewport.right - 10, yPos);
     const pos2 = vec(this.camera.viewport.right + 200, yPos);

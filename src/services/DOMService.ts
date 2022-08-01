@@ -52,22 +52,27 @@ export class DOMService {
 }
 
 export const uiConfig: UiDivConfig = {
-  rootDivId: 'root',
+  menuDivId: 'menu',
   gameCanvaId: 'game',
   loaderProgressId: 'loader-progress',
   iFrameContainerDiv: 'iframe-container',
   iframe: 'iframe',
   loaderContainerDiv: 'loader-container',
   modalContainerDiv: 'modal-container',
-  coinsScoreDiv: 'coins-score',
+  endOfLevelModal: 'end-of-level-modal',
+  mainMenu: 'main-menu',
 };
 
-export type DomElementIds = 'root' | 'game' |'loader-container' |'loader-progress' | 'joystick'
+export type DomElementIds = 'menu' | 'game' |'loader-container' |'loader-progress' | 'joystick'
 | 'iframe-container' | 'iframe'
-| 'modal-container' | 'coins-text' | 'coins-score';
-export type DomElementKeys = 'rootDivId' | 'gameCanvaId' | 'loaderContainerDiv'| 'loaderProgressId'
+| 'modal-container'
+| 'end-of-level-modal'
+| 'main-menu'
+export type DomElementKeys = 'menuDivId' | 'gameCanvaId' | 'loaderContainerDiv'| 'loaderProgressId'
 | 'iFrameContainerDiv' | 'iframe'
-| 'modalContainerDiv' | 'coinsScoreDiv';
+| 'modalContainerDiv'
+| 'endOfLevelModal'
+| 'mainMenu';
 
 export type UiDivConfig = { [key in DomElementKeys]: DomElementIds }
 export type HTMLElementConfig = {tagName:string, id:DomElementIds, classes?:string[], parentContainer?:HTMLElement, attributes?:HTMLElementAttribute[]}

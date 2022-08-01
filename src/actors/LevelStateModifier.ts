@@ -1,11 +1,11 @@
 import {
-  Actor, ActorArgs, EasingFunctions, Engine, vec,
+  ActorArgs, Engine,
 } from 'excalibur';
 import Container from 'typedi';
 import { LevelEvents, LevelStateModifierType } from '../types/BasicTypes';
 import { ExcaliburActor, ActorConfig } from './ExcaliburActor';
 import { ActorAnimationsKeys } from '../config/graphics/keys/ActorTextureKeys';
-import { levelState } from '../LevelState';
+import { levelState } from '../levelState';
 import { Tags } from '../config/Tags';
 import { ExcaliburActionService } from '../services/ExcaliburActionService';
 

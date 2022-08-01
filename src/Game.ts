@@ -7,12 +7,16 @@ import { PlayScene } from './scenes/PlayScene';
 import { SceneKeys } from './types/BasicTypes';
 import { allResources } from './config/AllResources';
 import { GameConfigService } from './services/GameConfigService';
+import { MenuScene } from './scenes/MenuScene';
 
 export class Game extends Engine {
   private static game: Game;
 
+  private static gameConfigService = Container.get(GameConfigService);
+
   private static scenesInfo: SceneInfo = {
     playLevel: { key: 'playLevel', ctor: PlayScene },
+    menuLevel: { key: 'menuLevel', ctor: MenuScene },
   };
 
   public static getInstance(): Game {
@@ -23,8 +27,7 @@ export class Game extends Engine {
       Object.values(this.scenesInfo).forEach(({ key, ctor }) => {
         this.game.addScene(key, new ctor());
       });
-      const gameConfigService = Container.get(GameConfigService);
-      const { gravity } = gameConfigService.getPhysicsConfig();
+      const { gravity } = Game.gameConfigService.getPhysicsConfig();
       Physics.gravity = vec(gravity.x, gravity.y);
     }
     return this.game;
@@ -37,13 +40,15 @@ export class Game extends Engine {
   public startCustomLoader(): Promise<void> {
     const loader: Loader = new Loader(allResources);
     this.logLoadingProgress(loader);
+    let width:number;
     loader.startButtonFactory = () => {
       const progressLoggerElement: HTMLElement = document.getElementById('loader-progress');
-      /** we'll replace this button with ionic-react buttons. Stay tuned :) */
       progressLoggerElement.textContent = '100%';
-      const simpleButton = document.createElement('button');
-      simpleButton.textContent = 'Play Sword Adventure!';
-      return simpleButton as any as HTMLButtonElement;
+      const ionButton = document.createElement('ion-button');
+      ionButton.textContent = 'Play Sword Adventure!';
+      ionButton.setAttribute('expand', 'fill');
+      // TODO: the button is not centered, why? see also index.css -> #excalibur-play-root rule.
+      return ionButton as any as HTMLButtonElement;
     };
     return Game.getInstance().start(loader);
   }

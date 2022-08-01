@@ -35,7 +35,7 @@ module.exports = function (config) {
             module: {
                 rules: [
                     {
-                        test: /\.ts$/,
+                        test: /\.(ts|tsx)$/,
                         use: 'ts-loader',
                     },
                     {
@@ -45,7 +45,7 @@ module.exports = function (config) {
                 ]
             },
             resolve: {
-                extensions: ['.ts', '.js'],
+                extensions: ['.ts', '.tsx', '.js'],
             },
             devServer: {
                 contentBase: path.join(__dirname, './dist'),

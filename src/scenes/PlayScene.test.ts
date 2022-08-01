@@ -23,10 +23,10 @@ describe('PlayScene', () => {
     reset(parallaxService);
   });
 
-  it('should initialize the scene with its actors', () => {
+  it('should activate the scene with its actors', () => {
     const scene: PlayScene = new PlayScene();
 
-    scene.onInitialize();
+    scene.onActivate();
 
     verify(actorFactory.createPlayer(anything())).once();
     verify(actorFactory.createMentor(anything())).once();
@@ -34,6 +34,17 @@ describe('PlayScene', () => {
     verify(actorFactory.createLevelStateModifier('sword', anything())).once();
     verify(parallaxService.configureParallax('playLevel', scene)).once();
     checkActorTags(scene);
+  });
+
+  it('should deactivate the scene removing its actors', () => {
+    const scene: PlayScene = new PlayScene();
+    scene.onActivate();
+
+    scene.onDeactivate();
+
+    scene.actors.forEach((actor) => {
+      expect(actor.active).toBe(false);
+    });
   });
 
   function checkActorTags(scene: Scene) {

@@ -11,6 +11,6 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/test/fileMock.js',
   },
   transform: { '^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest' },
-  transformIgnorePatterns: ['/node_modules'],
+  transformIgnorePatterns: ['/node_modules/(?!@ionic/core|@stencil/core|ionicons)'],
   resolver: undefined,
 };

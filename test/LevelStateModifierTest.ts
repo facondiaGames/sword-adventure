@@ -1,5 +1,5 @@
 import {
-  Actor, CollisionType, Events, GameEvent, Shape, vec,
+  Actor, CollisionType, GameEvent, Shape, vec,
 } from 'excalibur';
 import {
   anything,
@@ -12,7 +12,6 @@ import { ExcaliburTestUtils } from './ExcaliburTestUtil';
 import { Game } from '../src/Game';
 import { LevelStateModifier } from '../src/actors/LevelStateModifier';
 import { Tags } from '../src/config/Tags';
-import { levelState } from '../src/LevelState';
 import { ExcaliburActionService } from '../src/services/ExcaliburActionService';
 
 describe('LevelStateModifier', () => {

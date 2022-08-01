@@ -48,3 +48,7 @@ body {
     z-index: 100;
     background-color: white;
 }
+
+#excalibur-play-root {
+    width:100%;
+}

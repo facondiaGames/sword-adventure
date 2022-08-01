@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "jsx": "react-jsx",
     "skipLibCheck": true,
     "module": "esnext",
     "resolveJsonModule": true,
@@ -32,7 +33,8 @@
   },
   "include": [
     "src/**/*",
-    "test-karma/**/*"
+    "test-karma/**/*",
+    "test/MenuScene.test.ts"
   ],
   "exclude": [
     "node_modules"

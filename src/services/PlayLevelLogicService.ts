@@ -1,8 +1,8 @@
 import { filter } from 'rxjs';
 import Container, { Service } from 'typedi';
 import { createMachine, interpret } from 'xstate';
-import { levelState } from '../LevelState';
-import { ModalService } from './ModalService';
+import { levelState } from '../levelState';
+import { UIService } from './UIService';
 import { Util } from '../Util';
 
 @Service()
@@ -11,7 +11,7 @@ export class PlayLevelLogicService {
 
   private stateEventSubscriptions;
 
-  private modalService = Container.get(ModalService);
+  private uiService = Container.get(UIService);
 
   public startStateMachine(): void {
     this.stateEventSubscriptions = levelState
@@ -62,7 +62,7 @@ export class PlayLevelLogicService {
             console.log('new coin count: ', context.coins);
           },
           endOfLevel: (context) => {
-            this.modalService.showEndOfLevelModal(context.coins);
+            this.uiService.showEndOfLevelModal(context.coins);
           },
         },
       },
