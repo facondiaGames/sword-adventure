@@ -4,7 +4,7 @@ const config: CapacitorConfig = {
   appId: 'adventure.sword.games.facondia',
   appName: 'Sword Adventure',
   webDir: 'dist',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
 };
 
 export default config;

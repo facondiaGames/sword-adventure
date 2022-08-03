@@ -61,6 +61,8 @@ export const uiConfig: UiDivConfig = {
   modalContainerDiv: 'modal-container',
   endOfLevelModal: 'end-of-level-modal',
   mainMenu: 'main-menu',
+  soundSettings: 'sound-settings',
+  scoreDiv: 'score'
 };
 
 export type DomElementIds = 'menu' | 'game' |'loader-container' |'loader-progress' | 'joystick'
@@ -68,11 +70,15 @@ export type DomElementIds = 'menu' | 'game' |'loader-container' |'loader-progres
 | 'modal-container'
 | 'end-of-level-modal'
 | 'main-menu'
+| 'sound-settings'
+| 'score';
 export type DomElementKeys = 'menuDivId' | 'gameCanvaId' | 'loaderContainerDiv'| 'loaderProgressId'
 | 'iFrameContainerDiv' | 'iframe'
 | 'modalContainerDiv'
 | 'endOfLevelModal'
-| 'mainMenu';
+| 'mainMenu'
+| 'soundSettings'
+| 'scoreDiv';
 
 export type UiDivConfig = { [key in DomElementKeys]: DomElementIds }
 export type HTMLElementConfig = {tagName:string, id:DomElementIds, classes?:string[], parentContainer?:HTMLElement, attributes?:HTMLElementAttribute[]}

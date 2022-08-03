@@ -27,4 +27,19 @@ export module Configs {
         },
       },
     };
+
+    export const connectionData: ConnectionData = {
+      database: 'swordAdventure',
+      table: 'swordAdventureTable',
+      encrypted: false,
+      mode: 'no-encryption',
+    };
+
 }
+
+export type ConnectionData = {
+  database: string,
+  table: string,
+  encrypted: boolean,
+  mode: 'no-encryption'
+};

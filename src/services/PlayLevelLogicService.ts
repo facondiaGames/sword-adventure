@@ -4,6 +4,7 @@ import { createMachine, interpret } from 'xstate';
 import { levelState } from '../levelState';
 import { UIService } from './UIService';
 import { Util } from '../Util';
+import { GameStateService } from './GameStateService';
 
 @Service()
 export class PlayLevelLogicService {
@@ -12,6 +13,8 @@ export class PlayLevelLogicService {
   private stateEventSubscriptions;
 
   private uiService = Container.get(UIService);
+
+  private gameStateService = Container.get(GameStateService);
 
   public startStateMachine(): void {
     this.stateEventSubscriptions = levelState
@@ -36,7 +39,7 @@ export class PlayLevelLogicService {
         id: 'play-level-logic',
         initial: 'playing',
         context: {
-          coins: 0,
+          coins: this.gameStateService.getCoinCount(),
         },
         states: {
           playing: {
@@ -59,7 +62,7 @@ export class PlayLevelLogicService {
         actions: {
           updateCoin: (context) => {
             context.coins += 1;
-            console.log('new coin count: ', context.coins);
+            this.gameStateService.setCoinCount(context.coins);
           },
           endOfLevel: (context) => {
             this.uiService.showEndOfLevelModal(context.coins);

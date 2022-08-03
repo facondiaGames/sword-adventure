@@ -69,7 +69,7 @@ export class DevelService {
 
   private createEndOfLevelModalButton(containerDiv: HTMLDivElement) {
     const button: HTMLButtonElement = document.createElement('button');
-    button.textContent = 'modal debug';
+    button.textContent = 'end level';
     const game = Game.getInstance();
     button.onclick = () => {
       game.goTo('menuLevel');

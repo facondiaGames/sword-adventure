@@ -19,8 +19,14 @@ import { DOMService } from './services/DOMService';
 import { DevelService } from './DevelService';
 import { DeviceService } from './services/DeviceService';
 import { IFrameService } from './services/IFrameService';
+import { StoreService } from './db-plugin/data-storage-sqlite/StoreService';
+import { AudioManager } from './services/AudioManager';
+import { GameStateService } from './services/GameStateService';
 
 setupIonicReact();
+
+// Load font before game start. Thanks to https://excaliburjs.com/docs/text#gatsby-focus-wrapper!
+await waitForFontLoad('12px MouseMemoirs-Regular');
 
 const domService: DOMService = Container.get(DOMService);
 const deviceService: DeviceService = Container.get(DeviceService);
@@ -32,9 +38,36 @@ devService.showDevelopmentTools();
 const iFrameService = Container.get(IFrameService);
 iFrameService.init();
 
-const game: Game = Game.getInstance();
+const audioManager = Container.get(AudioManager);
+const gameStateService = Container.get(GameStateService);
 
-game.startCustomLoader().then(() => {
-  domService.removeElement('loader-container');
-  game.goTo('playLevel');
+const storeService = Container.get(StoreService);
+await storeService.init().then(async () => {
+  audioManager.init();
+  gameStateService.init();
+  const game = Game.getInstance();
+  game.startCustomLoader().then(() => {
+    audioManager.startBackgroundMusic();
+    domService.removeElement('loader-container');
+    game.goTo('menuLevel');
+  });
 });
+
+
+async function waitForFontLoad(font, timeout = 2000, interval = 100) {
+  return new Promise((resolve, reject) => {
+      // repeatedly poll check
+      const poller = setInterval(async () => {
+          try {
+              await document.fonts.load(font);
+          } catch (err) {
+              reject(err);
+          }
+          if (document.fonts.check(font)) {
+              clearInterval(poller);
+              resolve(true);
+          }
+      }, interval);
+      setTimeout(() => clearInterval(poller), timeout);
+  });
+}

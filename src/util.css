@@ -34,6 +34,10 @@
     padding: 0.3rem;
 }
 
+.padding-xl {
+    padding: 2rem;
+}
+
 .overflow--auto {
     overflow: auto;
 }
@@ -50,6 +54,6 @@
     width: 60%;
 }
 
-.white-background {
-    background: white;
+.gradient-background {
+    background: linear-gradient(180deg, #e0ede9, #3592c9);
 }

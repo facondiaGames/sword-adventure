@@ -40,7 +40,7 @@ export class Game extends Engine {
   public startCustomLoader(): Promise<void> {
     const loader: Loader = new Loader(allResources);
     this.logLoadingProgress(loader);
-    let width:number;
+    loader.backgroundColor = '#145DA0';
     loader.startButtonFactory = () => {
       const progressLoggerElement: HTMLElement = document.getElementById('loader-progress');
       progressLoggerElement.textContent = '100%';

@@ -1,0 +1,70 @@
+:root {
+    --ion-color-primary: #8b0000;
+	--ion-color-primary-rgb: 139,0,0;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #7a0000;
+	--ion-color-primary-tint: #971a1a;
+
+	--ion-color-secondary: #3592c9;
+	--ion-color-secondary-rgb: 53,146,201;
+	--ion-color-secondary-contrast: #ffffff;
+	--ion-color-secondary-contrast-rgb: 255,255,255;
+	--ion-color-secondary-shade: #2f80b1;
+	--ion-color-secondary-tint: #499dce;
+
+	--ion-color-tertiary: #d8eeec;
+	--ion-color-tertiary-rgb: 216,238,236;
+	--ion-color-tertiary-contrast: #000000;
+	--ion-color-tertiary-contrast-rgb: 0,0,0;
+	--ion-color-tertiary-shade: #bed1d0;
+	--ion-color-tertiary-tint: #dcf0ee;
+
+	--ion-color-success: #00ff11;
+	--ion-color-success-rgb: 0,255,17;
+	--ion-color-success-contrast: #000000;
+	--ion-color-success-contrast-rgb: 0,0,0;
+	--ion-color-success-shade: #00e00f;
+	--ion-color-success-tint: #1aff29;
+
+	--ion-color-warning: #fff700;
+	--ion-color-warning-rgb: 255,247,0;
+	--ion-color-warning-contrast: #000000;
+	--ion-color-warning-contrast-rgb: 0,0,0;
+	--ion-color-warning-shade: #e0d900;
+	--ion-color-warning-tint: #fff81a;
+
+	--ion-color-danger: #ff0000;
+	--ion-color-danger-rgb: 255,0,0;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255,255,255;
+	--ion-color-danger-shade: #e00000;
+	--ion-color-danger-tint: #ff1a1a;
+
+	--ion-color-medium: #92949c;
+	--ion-color-medium-rgb: 146,148,156;
+	--ion-color-medium-contrast: #000000;
+	--ion-color-medium-contrast-rgb: 0,0,0;
+	--ion-color-medium-shade: #808289;
+	--ion-color-medium-tint: #9d9fa6;
+
+	--ion-color-light: #f4f5f8;
+	--ion-color-light-rgb: 244,245,248;
+	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast-rgb: 0,0,0;
+	--ion-color-light-shade: #d7d8da;
+	--ion-color-light-tint: #f5f6f9;
+
+    --ion-font-family: MouseMemoirs-Regular;
+}
+
+
+/* Set the color on all ion-button elements */
+ion-button {
+    --border-color: black;
+    --border-radius: 5px;
+    --border-style: solid;
+    --border-width: 2px;
+    --box-shadow: 0 0 8px #83deebff;
+}
+

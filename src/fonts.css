@@ -1,0 +1,8 @@
+@font-face {
+    font-family: MouseMemoirs-Regular;
+    src: url(assets/MouseMemoirs-Regular.ttf);
+}
+
+.font-large {
+    font-size: large;
+}

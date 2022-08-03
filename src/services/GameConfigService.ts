@@ -1,6 +1,6 @@
 import { Container, Service } from 'typedi';
 import { DeviceService } from './DeviceService';
-import { Configs } from '../config/GameConfig';
+import { Configs } from '../config/Configs';
 import { GameConfig, PhysicsConfig } from '../types/Types';
 
 @Service()

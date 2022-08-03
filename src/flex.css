@@ -5,6 +5,11 @@
     height: 100%;
 }
 
+.flex--horizontal-no-full{
+    display: flex;
+    flex-direction: row;
+}
+
 .flex--vertical {
     display: flex;
     flex-direction: column;
@@ -41,6 +46,11 @@
 .flex--justify-end {
     justify-content: end;
 }
+
+.flex--justify-start {
+    justify-content: start;
+}
+
 
 .flex--wrap {
     flex-wrap: wrap;
