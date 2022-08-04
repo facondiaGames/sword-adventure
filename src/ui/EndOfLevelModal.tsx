@@ -1,9 +1,9 @@
 import { IonButton, IonText } from '@ionic/react';
+import Container from 'typedi';
 import { uiConfig } from '../services/DOMService';
 import { Game } from '../Game';
 import { Translation } from '../config/Translation';
 import LanguageService from '../services/LanguageService';
-import Container from 'typedi';
 
 export default function EndOfLevelModal({ score }: { score:number }) {
   const id = uiConfig.endOfLevelModal;
@@ -16,7 +16,9 @@ export default function EndOfLevelModal({ score }: { score:number }) {
       <div className="margin--auto width--60 full-height">
         <div className="flex--vertical flex--space-evenly flex-align-items--center">
           <IonText>
-            {endOfLevelText} {score}
+            {endOfLevelText}
+            {' '}
+            {score}
             .
           </IonText>
           <IonButton
@@ -25,7 +27,7 @@ export default function EndOfLevelModal({ score }: { score:number }) {
               game.goTo('menuLevel');
             }}
             color="primary"
-            size='large'
+            size="large"
           >
             {goToMenuText}
           </IonButton>

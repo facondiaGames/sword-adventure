@@ -10,52 +10,53 @@ import it from '../assets/i18n/it.json';
 
 @Service()
 export default class LanguageService {
+  private currentLanguage: AvailableLanguages;
 
-    private currentLanguage: AvailableLanguages;
-    private currentLanguageSub: BehaviorSubject<AvailableLanguages> = new BehaviorSubject(undefined);
-    private tFunction: TFunction;
+  private currentLanguageSub: BehaviorSubject<AvailableLanguages> = new BehaviorSubject(undefined);
 
-    private storeService = Container.get(StoreService);
+  private tFunction: TFunction;
 
-    public getCurrentLanguage(): AvailableLanguages {
-        return this.currentLanguage;
-    }
+  private storeService = Container.get(StoreService);
 
-    public async init(): Promise<void> {
-        this.currentLanguage = await this.storeService.getItem({key: StoreConstants.settings.language}) as AvailableLanguages;
-        this.tFunction = await i18next.init({
-            lng: this.currentLanguage, // if you're using a language detector, do not define the lng option
-            debug: false,
-            resources: {
-                en: {
-                    translation: {
-                        ...en
-                    }
-                },
-                it: {
-                    translation: {
-                        ...it
-                    }
-                }
-            }
-        });
-    }
+  public getCurrentLanguage(): AvailableLanguages {
+    return this.currentLanguage;
+  }
 
-    public translate(key: string): string {
-        const noTranslation: string = i18next.t(Translation.keys.noTranslation);
-        return this.tFunction(key, noTranslation);
-    }
+  public async init(): Promise<void> {
+    this.currentLanguage = await this.storeService.getItem({ key: StoreConstants.settings.language }) as AvailableLanguages;
+    this.tFunction = await i18next.init({
+      lng: this.currentLanguage, // if you're using a language detector, do not define the lng option
+      debug: false,
+      resources: {
+        en: {
+          translation: {
+            ...en,
+          },
+        },
+        it: {
+          translation: {
+            ...it,
+          },
+        },
+      },
+    });
+  }
 
-    public async changeLanguage(languageKey: AvailableLanguages) {
-        this.tFunction = await i18next.changeLanguage(languageKey);
-        this.currentLanguage = languageKey;
-        this.currentLanguageSub.next(this.currentLanguage);
-        this.storeService.setItem({key: StoreConstants.settings.language, value: languageKey});
-    }
+  public translate(key: string): string {
+    const noTranslation: string = i18next.t(Translation.keys.noTranslation);
+    return this.tFunction(key, noTranslation);
+  }
 
-    public onLanguageChange() {
-        return this.currentLanguageSub.pipe(filter(value => Util.isDefined(value)));
-    }
-};
+  public async changeLanguage(languageKey: AvailableLanguages) {
+    this.tFunction = await i18next.changeLanguage(languageKey);
+    this.currentLanguage = languageKey;
+    this.currentLanguageSub.next(this.currentLanguage);
+    this.storeService.setItem({ key: StoreConstants.settings.language, value: languageKey });
+  }
+
+  public onLanguageChange() {
+    return this.currentLanguageSub.pipe(filter((value) => Util.isDefined(value)));
+  }
+}
 
 export type AvailableLanguages = 'it' | 'en';

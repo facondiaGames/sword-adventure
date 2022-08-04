@@ -5,6 +5,7 @@ import LanguageService from './LanguageService';
 @Service()
 export class IFrameService {
   private domService: DOMService = Container.get(DOMService);
+
   private languageService: LanguageService = Container.get(LanguageService);
 
   /**

@@ -7,8 +7,8 @@ export default function IonicReactUI() {
   return (
     <React.StrictMode>
       <IonApp>
-        <div className='gradient-background flex--vertical flex--justify-center flex-align-items--center'>
-          <Score></Score>
+        <div className="gradient-background flex--vertical flex--justify-center flex-align-items--center">
+          <Score />
           <MainMenu />
         </div>
       </IonApp>

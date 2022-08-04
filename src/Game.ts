@@ -48,7 +48,7 @@ export class Game extends Engine {
       progressLoggerElement.textContent = '100%';
       const ionButton = document.createElement('ion-button');
       const languageService = Container.get(LanguageService);
-      ionButton.textContent = languageService.translate(Translation.keys.playSwordAdventure);;
+      ionButton.textContent = languageService.translate(Translation.keys.playSwordAdventure);
       ionButton.setAttribute('expand', 'fill');
       // TODO: the button is not centered, why? see also index.css -> #excalibur-play-root rule.
       return ionButton as any as HTMLButtonElement;

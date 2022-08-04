@@ -62,7 +62,7 @@ export const uiConfig: UiDivConfig = {
   endOfLevelModal: 'end-of-level-modal',
   mainMenu: 'main-menu',
   soundSettings: 'sound-settings',
-  scoreDiv: 'score'
+  scoreDiv: 'score',
 };
 
 export type DomElementIds = 'menu' | 'game' |'loader-container' |'loader-progress' | 'joystick'

@@ -5,6 +5,6 @@ export class StoreConstants {
 
   public static settings = {
     sound: 'sound',
-    language:'language'
+    language: 'language',
   };
 }
