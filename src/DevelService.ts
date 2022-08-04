@@ -72,7 +72,7 @@ export class DevelService {
     button.textContent = 'end level';
     const game = Game.getInstance();
     button.onclick = () => {
-      game.goTo('menuLevel');
+      game.goTo({toScene:'menuLevel'});
     };
     containerDiv.appendChild(button);
   }

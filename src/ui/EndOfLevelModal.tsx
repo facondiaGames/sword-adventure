@@ -4,12 +4,15 @@ import { uiConfig } from '../services/DOMService';
 import { Game } from '../Game';
 import { Translation } from '../config/Translation';
 import { LanguageService } from '../services/LanguageService';
+import { MotionService } from '../services/MotionService';
 
 export default function EndOfLevelModal({ score }: { score:number }) {
   const id = uiConfig.endOfLevelModal;
   const languageService = Container.get(LanguageService);
   const goToMenuText = languageService.translate(Translation.keys.goToMainMenu);
   const endOfLevelText = languageService.translate(Translation.keys.yourScore);
+  const motionService = Container.get(MotionService);
+  motionService.unsetPlayer();
 
   return (
     <div className="full-size gradient-background" id={id}>
@@ -24,7 +27,7 @@ export default function EndOfLevelModal({ score }: { score:number }) {
           <IonButton
             onClick={() => {
               const game = Game.getInstance();
-              game.goTo('menuLevel');
+              game.goTo({toScene:'menuLevel'});
             }}
             color="primary"
             size="large"

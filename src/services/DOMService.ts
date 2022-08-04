@@ -54,6 +54,7 @@ export class DOMService {
 export const uiConfig: UiDivConfig = {
   menuDivId: 'menu',
   gameCanvaId: 'game',
+  gameUI: 'game-ui',
   loaderProgressId: 'loader-progress',
   iFrameContainerDiv: 'iframe-container',
   iframe: 'iframe',
@@ -63,22 +64,40 @@ export const uiConfig: UiDivConfig = {
   mainMenu: 'main-menu',
   soundSettings: 'sound-settings',
   scoreDiv: 'score',
+  sceneTransitionDiv: 'scene-transition',
+  animationPlaceDiv: 'animation-place'
 };
 
-export type DomElementIds = 'menu' | 'game' |'loader-container' |'loader-progress' | 'joystick'
-| 'iframe-container' | 'iframe'
-| 'modal-container'
-| 'end-of-level-modal'
+export type DomElementIds = 
+'loader-container'
+|'loader-progress' 
+| 'iframe'
 | 'main-menu'
+| 'end-of-level-modal'
 | 'sound-settings'
-| 'score';
+| 'score'
+| 'animation-place'
+| 'scene-transition'
+| 'game-ui'
+| 'iframe-container' 
+| 'modal-container'
+| LayerIds;
+
+export type LayerIds = 
+'game' 
+| 'menu'
+| 'joystick';
+
 export type DomElementKeys = 'menuDivId' | 'gameCanvaId' | 'loaderContainerDiv'| 'loaderProgressId'
 | 'iFrameContainerDiv' | 'iframe'
 | 'modalContainerDiv'
 | 'endOfLevelModal'
 | 'mainMenu'
+| 'gameUI'
 | 'soundSettings'
-| 'scoreDiv';
+| 'scoreDiv'
+| 'animationPlaceDiv'
+| 'sceneTransitionDiv';
 
 export type UiDivConfig = { [key in DomElementKeys]: DomElementIds }
 export type HTMLElementConfig = {tagName:string, id:DomElementIds, classes?:string[], parentContainer?:HTMLElement, attributes?:HTMLElementAttribute[]}

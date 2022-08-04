@@ -32,7 +32,7 @@ export default function MainMenu() {
           <IonButton
             onClick={() => {
               const game = Game.getInstance();
-              game.goTo('playLevel');
+              game.goTo({toScene:'playLevel'});
             }}
             color="primary"
             size="large"

@@ -70,6 +70,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {from: "src/twinery-dialog/**.html", to: "twinery-dialog/[name][ext]"},
+                {from: "src/assets/voxel-pack/PNG/Items/sword_iron.png", to: "assets/voxel-pack/PNG/Items/sword_iron.png"},
             ]
         })
     ],

@@ -5,6 +5,7 @@ import { Container, Service } from 'typedi';
 import { JoystickManager } from 'nipplejs';
 import { ActorAnimationsKeys } from '../config/graphics/keys/ActorTextureKeys';
 import { JoystickFactory } from './JoystickFactory';
+import { toGuard } from 'xstate/lib/utils';
 
 @Service()
 export class MotionService {
@@ -27,6 +28,13 @@ export class MotionService {
     this.endMoveFn = endMove;
     this.startMoveFn = startMove;
   }
+
+public unsetPlayer(){
+  this.player = undefined;
+  this.endMoveFn = undefined;
+  this.startMoveFn = undefined;
+  this.joystickFactory.destroy();
+}
 
   public setMotionType(motionType: MotionTypes): void {
     this.motionType = motionType;
@@ -87,6 +95,7 @@ export class MotionService {
         if (direction?.x) {
           const speed: Speed = { x: vector.x * this.speedMultiplier, y: 0 };
           const horizontalFlip: boolean = direction.angle === 'left';
+          this.startMoveFn();
           this.run(speed, horizontalFlip);
         }
       });

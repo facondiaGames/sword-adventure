@@ -7,6 +7,7 @@ import { uiConfig } from '../services/DOMService';
 import { Util } from '../Util';
 import { LanguageService } from '../services/LanguageService';
 import { Translation } from '../config/Translation';
+import { MotionService } from '../services/MotionService';
 
 export default function Score() {
   const id = uiConfig.scoreDiv;
@@ -14,7 +15,6 @@ export default function Score() {
   const gameStateService = Container.get(GameStateService);
   const languageService = Container.get(LanguageService);
   const [coinsCount, setCoinsCount] = useState(undefined);
-
   const [coinsCountText, setCoinsCountText] = useState(languageService.translate(Translation.keys.score));
 
   useEffect(() => {

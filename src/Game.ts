@@ -10,6 +10,8 @@ import { GameConfigService } from './services/GameConfigService';
 import { MenuScene } from './scenes/MenuScene';
 import { LanguageService } from './services/LanguageService';
 import { Translation } from './config/Translation';
+import { Util } from './Util';
+import { SceneTransitions } from './scenes/SceneTransitions';
 
 export class Game extends Engine {
   private static game: Game;
@@ -56,9 +58,29 @@ export class Game extends Engine {
     return Game.getInstance().start(loader);
   }
 
-  public goTo(sceneKey: SceneKeys): void {
-    Game.getInstance().goToScene(sceneKey);
+  public goTo({toScene, fromScene}: GoToSceneConfig): void {
+    this.endSceneTransitions(fromScene).then(async () => {
+      await this.prepareSceneAndGoto(toScene);
+    });
   }
+
+private async prepareSceneAndGoto(toScene: SceneKeys): Promise<void> {
+    const {prepareScene,sceneStart} = SceneTransitions.transitions[toScene];
+    await prepareScene();
+    sceneStart().then(()=> {
+      Game.getInstance().goToScene(toScene);
+    });
+}
+
+private endSceneTransitions(fromScene: SceneKeys): Promise<any> {
+    if (Util.isDefined(fromScene)) {
+        const {sceneEnds} = SceneTransitions.transitions[fromScene];
+        const currentScene = Game.getInstance().currentScene;
+        return sceneEnds(currentScene)
+    } else {
+        return Promise.resolve();
+    }
+}
 
   private logLoadingProgress(loader: Loader, timeout = 2000, interval = 100) {
     const progressLoggerElement: HTMLElement = document.getElementById('loader-progress');
@@ -75,3 +97,4 @@ export class Game extends Engine {
 }
 
 type SceneInfo = { [key in SceneKeys]: { key: key, ctor: any } };
+type GoToSceneConfig = { toScene: SceneKeys, fromScene?: SceneKeys };

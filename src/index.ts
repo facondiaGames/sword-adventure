@@ -12,6 +12,7 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
+import 'animate.css';
 import { Container } from 'typedi';
 import { setupIonicReact } from '@ionic/react';
 import { Game } from './Game';
@@ -52,7 +53,7 @@ await storeService.init().then(async () => {
   game.startCustomLoader().then(() => {
     audioManager.startBackgroundMusic();
     domService.removeElement('loader-container');
-    game.goTo('menuLevel');
+    game.goTo({toScene:'menuLevel'});
   });
 });
 

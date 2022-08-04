@@ -17,6 +17,7 @@
     "@capacitor/core": "^4.0.1",
     "@ionic/react": "^6.2.0",
     "@types/node": "^12.19.15",
+    "animate.css": "^4.1.1",
     "capacitor-data-storage-sqlite": "^3.4.3",
     "copy-webpack-plugin": "^11.0.0",
     "excalibur": "^0.26.0",

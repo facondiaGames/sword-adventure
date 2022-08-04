@@ -17,6 +17,10 @@ export class Player extends ExcaliburActor {
     this.configureMotionService();
   }
 
+  public onPreKill(){
+   this.motionService.unsetPlayer();
+  }
+
   private configureMotionService() {
     const startMoveFn = () => {
       const horizontalParallaxService = Container.get(HorizontalParallaxService);
@@ -30,4 +34,5 @@ export class Player extends ExcaliburActor {
     this.motionService.setPlayer(this, startMoveFn, endMoveFn);
     this.motionService.setMotionType('keyboard');
   }
+
 }
