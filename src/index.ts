@@ -22,6 +22,7 @@ import { IFrameService } from './services/IFrameService';
 import { StoreService } from './db-plugin/data-storage-sqlite/StoreService';
 import { AudioManager } from './services/AudioManager';
 import { GameStateService } from './services/GameStateService';
+import LanguageService from './services/LanguageService';
 
 setupIonicReact();
 
@@ -40,9 +41,11 @@ iFrameService.init();
 
 const audioManager = Container.get(AudioManager);
 const gameStateService = Container.get(GameStateService);
+const languageService = Container.get(LanguageService);
 
 const storeService = Container.get(StoreService);
 await storeService.init().then(async () => {
+  await languageService.init();
   audioManager.init();
   gameStateService.init();
   const game = Game.getInstance();

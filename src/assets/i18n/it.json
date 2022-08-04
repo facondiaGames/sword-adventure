@@ -1,0 +1,13 @@
+{
+  "playKey": "Gioca",
+  "scoreKey": "Punteggio",
+  "soundKey": "Suono",
+  "languageKey": "Lingua",
+  "yourScoreKey": "Il tuo punteggio è",
+  "goToMainMenuKey": "Vai al menù",
+  "noTranslationKey": "Traduzione mancante",
+  "backKey": "Indietro",
+  "playSwordAdventureKey": "Gioca a Sword Adventure!",
+  "italianKey": "Italiano",
+  "englishKey": "Inglese"
+}

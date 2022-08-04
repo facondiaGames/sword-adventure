@@ -2,9 +2,27 @@ import { IonButton, IonText } from '@ionic/react';
 import { uiConfig } from '../services/DOMService';
 import { Game } from '../Game';
 import SoundSettings from './SoundSettings';
+import Container from 'typedi';
+import LanguageService from '../services/LanguageService';
+import { Translation } from '../config/Translation';
+import LanguageSettings from './LanguageSettings';
+import { useEffect, useState } from 'react';
 
 export default function MainMenu() {
   const id = uiConfig.mainMenu;
+  const languageService = Container.get(LanguageService);
+  const [playText, setPlayText] = useState(languageService.translate(Translation.keys.play));
+
+  useEffect(() => {
+    const sub = languageService.onLanguageChange().subscribe(() => {
+      setPlayText(languageService.translate(Translation.keys.play));
+    });
+    return () => {
+        sub.unsubscribe();
+    }
+});
+
+
   return (
     <div style={{flexGrow:1}} id={id}>
         <div className="flex--vertical flex--space-between flex-align-items--center">
@@ -20,11 +38,12 @@ export default function MainMenu() {
               color="primary"
               size='large'
               >
-              Play
+              {playText}
             </IonButton>
           </div>
          
          <SoundSettings></SoundSettings>
+         <LanguageSettings></LanguageSettings>
 
         </div>
       </div>

@@ -1,15 +1,22 @@
 import { IonButton, IonText } from '@ionic/react';
 import { uiConfig } from '../services/DOMService';
 import { Game } from '../Game';
+import { Translation } from '../config/Translation';
+import LanguageService from '../services/LanguageService';
+import Container from 'typedi';
 
 export default function EndOfLevelModal({ score }: { score:number }) {
   const id = uiConfig.endOfLevelModal;
+  const languageService = Container.get(LanguageService);
+  const goToMenuText = languageService.translate(Translation.keys.goToMainMenu);
+  const endOfLevelText = languageService.translate(Translation.keys.yourScore);
+
   return (
     <div className="full-size gradient-background" id={id}>
       <div className="margin--auto width--60 full-height">
         <div className="flex--vertical flex--space-evenly flex-align-items--center">
           <IonText>
-            Your score is {score}
+            {endOfLevelText} {score}
             .
           </IonText>
           <IonButton
@@ -20,7 +27,7 @@ export default function EndOfLevelModal({ score }: { score:number }) {
             color="primary"
             size='large'
           >
-            Go to main menu
+            {goToMenuText}
           </IonButton>
         </div>
       </div>

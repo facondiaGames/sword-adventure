@@ -4,11 +4,14 @@ import { StoreConstants } from "../db-plugin/StoreConstants";
 import { useEffect, useState } from 'react';
 import { AudioManager } from "../services/AudioManager";
 import { Container } from 'typedi';
+import LanguageService from "../services/LanguageService";
+import { Translation } from "../config/Translation";
 
 export default function SoundSettings() {
     const storeService = Container.get(StoreService);
     const [soundChecked, setSoundChecked] = useState(undefined);
-    const soundText = 'Sound';
+    const languageService = Container.get(LanguageService);
+    const soundText = languageService.translate(Translation.keys.sound);
 
     useEffect(() => {
         storeService.getItem({key: StoreConstants.settings.sound}).then((value) => {

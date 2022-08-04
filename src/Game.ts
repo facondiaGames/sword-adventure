@@ -8,6 +8,8 @@ import { SceneKeys } from './types/BasicTypes';
 import { allResources } from './config/AllResources';
 import { GameConfigService } from './services/GameConfigService';
 import { MenuScene } from './scenes/MenuScene';
+import LanguageService from './services/LanguageService';
+import { Translation } from './config/Translation';
 
 export class Game extends Engine {
   private static game: Game;
@@ -45,7 +47,8 @@ export class Game extends Engine {
       const progressLoggerElement: HTMLElement = document.getElementById('loader-progress');
       progressLoggerElement.textContent = '100%';
       const ionButton = document.createElement('ion-button');
-      ionButton.textContent = 'Play Sword Adventure!';
+      const languageService = Container.get(LanguageService);
+      ionButton.textContent = languageService.translate(Translation.keys.playSwordAdventure);;
       ionButton.setAttribute('expand', 'fill');
       // TODO: the button is not centered, why? see also index.css -> #excalibur-play-root rule.
       return ionButton as any as HTMLButtonElement;

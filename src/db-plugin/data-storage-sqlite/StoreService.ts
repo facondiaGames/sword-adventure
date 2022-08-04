@@ -15,6 +15,7 @@ export class StoreService {
         await this.setItem({ key: StoreConstants.inizializedKey, value: true });
         await this.setItem({ key: StoreConstants.coinsCount, value: 0 });
         await this.setItem({ key: StoreConstants.settings.sound, value: true });
+        await this.setItem({ key: StoreConstants.settings.language, value: 'en' });
       }
     });
   }
