@@ -1,6 +1,6 @@
 import Container, { Service } from 'typedi';
 import { DOMService, HTMLElementConfig } from './DOMService';
-import LanguageService from './LanguageService';
+import { LanguageService } from './LanguageService';
 
 @Service()
 export class IFrameService {

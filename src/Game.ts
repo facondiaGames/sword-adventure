@@ -8,7 +8,7 @@ import { SceneKeys } from './types/BasicTypes';
 import { allResources } from './config/AllResources';
 import { GameConfigService } from './services/GameConfigService';
 import { MenuScene } from './scenes/MenuScene';
-import LanguageService from './services/LanguageService';
+import { LanguageService } from './services/LanguageService';
 import { Translation } from './config/Translation';
 
 export class Game extends Engine {

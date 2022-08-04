@@ -4,7 +4,7 @@ import { Container } from 'typedi';
 import { StoreService } from '../db-plugin/data-storage-sqlite/StoreService';
 import { StoreConstants } from '../db-plugin/StoreConstants';
 import { AudioManager } from '../services/AudioManager';
-import LanguageService from '../services/LanguageService';
+import { LanguageService } from '../services/LanguageService';
 import { Translation } from '../config/Translation';
 
 export default function SoundSettings() {

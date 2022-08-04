@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { uiConfig } from '../services/DOMService';
 import { Game } from '../Game';
 import SoundSettings from './SoundSettings';
-import LanguageService from '../services/LanguageService';
+import { LanguageService } from '../services/LanguageService';
 import { Translation } from '../config/Translation';
 import LanguageSettings from './LanguageSettings';
 

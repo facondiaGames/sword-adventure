@@ -16,6 +16,7 @@ module.exports = function (config) {
             'test/*.ts', 'test/*.js',
             {pattern: "**/*.json", watched: false, included: false, served: true, nocache: false},
             {pattern: "**/*.png", watched: false, included: false, served: true, nocache: false},
+            {pattern: "**/*.mp3", watched: false, included: false, served: true, nocache: false},
             {pattern: "**/*.jpg", watched: false, included: false, served: true, nocache: false},
             {pattern: "**/*.svg", watched: false, included: false, served: true, nocache: false},
         ],
@@ -39,7 +40,7 @@ module.exports = function (config) {
                         use: 'ts-loader',
                     },
                     {
-                        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                        test: /\.(png|svg|jpg|jpeg|gif|mp3)$/i,
                         type: "asset/resource",
                     }
                 ]

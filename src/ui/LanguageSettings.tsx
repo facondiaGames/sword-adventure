@@ -13,7 +13,7 @@ import {
 import { useState } from 'react';
 import { Container } from 'typedi';
 import { arrowUndoCircleOutline, language } from 'ionicons/icons';
-import LanguageService, { AvailableLanguages } from '../services/LanguageService';
+import { LanguageService, AvailableLanguages } from '../services/LanguageService';
 import { Translation } from '../config/Translation';
 
 export default function LanguageSettings(): JSX.Element {

@@ -22,7 +22,7 @@ import { IFrameService } from './services/IFrameService';
 import { StoreService } from './db-plugin/data-storage-sqlite/StoreService';
 import { AudioManager } from './services/AudioManager';
 import { GameStateService } from './services/GameStateService';
-import LanguageService from './services/LanguageService';
+import { LanguageService } from './services/LanguageService';
 
 setupIonicReact();
 

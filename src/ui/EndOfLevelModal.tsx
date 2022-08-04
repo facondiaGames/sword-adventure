@@ -3,7 +3,7 @@ import Container from 'typedi';
 import { uiConfig } from '../services/DOMService';
 import { Game } from '../Game';
 import { Translation } from '../config/Translation';
-import LanguageService from '../services/LanguageService';
+import { LanguageService } from '../services/LanguageService';
 
 export default function EndOfLevelModal({ score }: { score:number }) {
   const id = uiConfig.endOfLevelModal;

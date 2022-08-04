@@ -5,7 +5,7 @@ import { filter, first } from 'rxjs';
 import { GameStateService } from '../services/GameStateService';
 import { uiConfig } from '../services/DOMService';
 import { Util } from '../Util';
-import LanguageService from '../services/LanguageService';
+import { LanguageService } from '../services/LanguageService';
 import { Translation } from '../config/Translation';
 
 export default function Score() {

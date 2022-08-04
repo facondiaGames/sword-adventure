@@ -9,7 +9,7 @@ import en from '../assets/i18n/en.json';
 import it from '../assets/i18n/it.json';
 
 @Service()
-export default class LanguageService {
+export class LanguageService {
   private currentLanguage: AvailableLanguages;
 
   private currentLanguageSub: BehaviorSubject<AvailableLanguages> = new BehaviorSubject(undefined);
