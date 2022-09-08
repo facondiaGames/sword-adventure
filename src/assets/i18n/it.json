@@ -9,5 +9,8 @@
   "backKey": "Indietro",
   "playSwordAdventureKey": "Gioca a Sword Adventure!",
   "italianKey": "Italiano",
-  "englishKey": "Inglese"
+  "englishKey": "Inglese",
+  "menuHeadingKey": "Un progetto open-source di",
+  "menuSubHeadingKey":"Dagli un'occhiata su",
+  "readTutorialsKey": "Sviluppa un gioco come questo"
 }

@@ -6,3 +6,15 @@
 .font-large {
     font-size: large;
 }
+
+.font-xlarge {
+    font-size: x-large;
+}
+
+.font-medium {
+    font-size: medium;
+}
+
+.text-centered {
+    text-align:center;
+}

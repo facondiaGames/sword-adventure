@@ -24,14 +24,14 @@ export default function LanguageSettings(): JSX.Element {
   const backText = languageService.translate(Translation.keys.backButton);
 
   return (
-    <div>
+    <div id="language-settings" >
+      
       <IonButton
         onClick={() => {
           setShowModal(true);
         }}
-        expand="block"
         shape="round"
-        size="small"
+        size="large"
         fill="solid"
         color="dark"
       >

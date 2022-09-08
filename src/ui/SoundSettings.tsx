@@ -11,12 +11,18 @@ export default function SoundSettings() {
   const storeService = Container.get(StoreService);
   const [soundChecked, setSoundChecked] = useState(undefined);
   const languageService = Container.get(LanguageService);
-  const soundText = languageService.translate(Translation.keys.sound);
+  const [soundText, setSoundText] = useState(languageService.translate(Translation.keys.sound));
 
   useEffect(() => {
     storeService.getItem({ key: StoreConstants.settings.sound }).then((value) => {
       setSoundChecked(value === 'true');
     });
+    const sub = languageService.onLanguageChange().subscribe(() => {
+      setSoundText(languageService.translate(Translation.keys.sound));
+    });
+    return () => {
+      sub.unsubscribe();
+    };
   });
 
   return (

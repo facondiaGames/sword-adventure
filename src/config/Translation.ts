@@ -12,9 +12,20 @@ export module Translation {
       playSwordAdventure: 'playSwordAdventureKey',
       italian: 'italianKey',
       english: 'englishKey',
+      menuHeading: 'menuHeadingKey',
+      menuSubHeading: 'menuSubHeadingKey',
+      readTutorials: 'readTutorialsKey'
     };
 
+    export const immutable: NotToTranslateKeys= {
+      facondiaGames: 'Facondia Games',
+      gitHub: 'GitHub'
+    }
+
 }
+
+type NotToTranslate = 'facondiaGames'| 'gitHub'
+type NotToTranslateKeys = { [key in NotToTranslate]: string };
 
 type TranslationKeys = { [key in ToTranslate]: string };
 type ToTranslate = 'play' | 'score' | 'yourScore'
@@ -22,4 +33,7 @@ type ToTranslate = 'play' | 'score' | 'yourScore'
     | 'italian' | 'english'
     | 'backButton'
     | 'playSwordAdventure'
+    | 'menuHeading'
+    | 'menuSubHeading'
+    | 'readTutorials'
     | 'noTranslation';

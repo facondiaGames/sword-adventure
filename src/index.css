@@ -42,6 +42,25 @@ body {
     position: absolute;
 }
 
+#instagram-button {
+    position: absolute;
+    right: 1rem;
+    bottom:1rem;
+}
+
+#twitter-button {
+    position: absolute;
+    right: 1rem;
+    bottom:6rem;
+}
+
+#language-settings {
+    position: absolute;
+    left: 1rem;
+    bottom:1rem;
+}
+
+
 .position-top {
     top: 0;
     left: 0;
